@@ -223,7 +223,7 @@ it('should serialize storageState with lone surrogates', async ({ page, context,
   expect(storageState.origins[0].localStorage[0].value).toBe(String.fromCharCode(55934));
 });
 
-it('should work when service worker is intefering', async ({ page, context, server, isAndroid, isElectron, electronMajorVersion }) => {
+it('should work when service worker is interfering', async ({ page, context, server, isAndroid, isElectron, electronMajorVersion }) => {
   it.skip(isAndroid);
   it.skip(isElectron && electronMajorVersion < 30, 'error: Browser context management is not supported.');
 
