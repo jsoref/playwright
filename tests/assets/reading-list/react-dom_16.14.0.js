@@ -17088,7 +17088,7 @@
           // The pending update priority was cleared at the beginning of
           // beginWork. We're about to bail out, but there might be additional
           // updates at a lower priority. Usually, the priority level of the
-          // remaining updates is accumlated during the evaluation of the
+          // remaining updates is accumulated during the evaluation of the
           // component (i.e. when processing the update queue). But since since
           // we're bailing out early *without* evaluating the component, we need
           // to account for it here, too. Reset to the value of the current fiber.
