@@ -484,7 +484,7 @@ it('should be able to fetch dataURL and not fire dataURL requests', async ({ pag
   expect(requests.length).toBe(0);
 });
 
-it('should navigate to URL with hash and and fire requests without hash', async ({ page, server }) => {
+it('should navigate to URL with hash and fire requests without hash', async ({ page, server }) => {
   const requests = [];
   await page.route('**/*', route => {
     requests.push(route.request());
