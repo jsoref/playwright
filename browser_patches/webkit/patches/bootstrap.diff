@@ -12274,7 +12274,7 @@ index 0000000000000000000000000000000000000000..f9af359a8b81babaf855132ec168feb2
 + * function reserves the memory properly and it has to be freed by the caller
 + * with free(3).
 + * @param len Pointer to a variable of type size_t which will receive the final
-+ * lenght of the memory buffer.
++ * length of the memory buffer.
 + * @param quality Compression quality, 0-100.
 + * @return On success the function returns CAIRO_STATUS_SUCCESS. In case of
 + * error CAIRO_STATUS_INVALID_FORMAT is returned.
