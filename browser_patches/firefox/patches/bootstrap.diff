@@ -1144,7 +1144,7 @@ index 5a4cf78d65eee0adcbeca33787706113eca19de7..7c8016e422ccc9e86563eaa83c9acc1d
    }
  
 -  if (sTestMode) {
-+  // In Playwright, we still want to execte the embedder functions
++  // In Playwright, we still want to execute the embedder functions
 +  // to actually show / focus windows.
 +  if (false && sTestMode) {
      // In test mode, emulate raising the window. WindowRaised takes
