@@ -5972,7 +5972,7 @@
       if (queueIfContinuousEvent(blockedOn, domEventName, eventSystemFlags, targetContainer, nativeEvent)) {
         return;
       } // We need to clear only if we didn't queue because
-      // queueing is accummulative.
+      // queueing is cumulative.
 
 
       clearIfContinuousEvent(domEventName, nativeEvent);
