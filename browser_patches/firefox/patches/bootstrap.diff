@@ -271,7 +271,7 @@ index 5ec95a61e4d3af265cbe7dd9d83f6535da1d103e..f8acafe6d58c429af27a38363e06ad54
 +
    bool IsInBFCache() const;
  
-   bool AllowJavascript() const { return GetAllowJavascript(); }
+   bool AllowJavaScript() const { return GetAllowJavaScript(); }
 @@ -1090,6 +1102,23 @@ class BrowsingContext : public nsILoadContext, public nsWrapperCache {
    void WalkPresContexts(Callback&&);
    void PresContextAffectingFieldChanged();

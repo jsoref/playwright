@@ -596,7 +596,7 @@ class Frame {
 
   _updateJavaScriptDisabled() {
     if (this._browsingContext.currentWindowContext)
-      this._browsingContext.currentWindowContext.allowJavascript = !this._frameTree._javaScriptDisabled;
+      this._browsingContext.currentWindowContext.allowJavaScript = !this._frameTree._javaScriptDisabled;
   }
 
   mainExecutionContext() {
