@@ -653,7 +653,7 @@ test('should not hang and report results when worker process suddenly exits duri
   const result = await runInlineTest({
     'a.spec.js': `
       import { test, expect } from '@playwright/test';
-      test('failing due to afterall', () => {});
+      test('failing due to afterAll', () => {});
       test.afterAll(() => { process.exit(0); });
     `
   }, { reporter: 'line' });
@@ -661,7 +661,7 @@ test('should not hang and report results when worker process suddenly exits duri
   expect(result.passed).toBe(0);
   expect(result.failed).toBe(1);
   expect(result.output).toContain('Error: worker process exited unexpectedly');
-  expect(result.output).toContain('[1/1] a.spec.js:3:11 › failing due to afterall');
+  expect(result.output).toContain('[1/1] a.spec.js:3:11 › failing due to afterAll');
 });
 
 test('unhandled rejection during beforeAll should be reported and prevent more tests', async ({ runInlineTest }) => {
