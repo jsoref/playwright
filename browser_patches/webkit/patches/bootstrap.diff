@@ -13166,7 +13166,7 @@ index 0000000000000000000000000000000000000000..90080e92c8278e73355c1fd4c571ea12
 +void ScreencastEncoder::encodeFrame(cairo_surface_t* drawingAreaSurface, IntSize size)
 +{
 +    flushLastFrame();
-+    // Note that in WPE drawing area size is updated asynchronously and may differ from acutal
++    // Note that in WPE drawing area size is updated asynchronously and may differ from actual
 +    // size of the surface.
 +    if (size.isZero()) {
 +        return;
