@@ -312,7 +312,7 @@ it('should work with large DOM', async ({ page }) => {
   }
 });
 
-it('should be case sensitive if quotes are specified', async ({ page }) => {
+it('should be case-sensitive if quotes are specified', async ({ page }) => {
   await page.setContent(`<div>yo</div><div>ya</div><div>\nye  </div>`);
   expect(await page.$eval(`text=yA`, e => e.outerHTML)).toBe('<div>ya</div>');
   expect(await page.$(`text="yA"`)).toBe(null);

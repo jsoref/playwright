@@ -73,7 +73,7 @@ for (const [name, url] of Object.entries(reacts)) {
     it('should exact match by props', async ({ page }) => {
       await expect(page.locator(`_react=BookItem[name = "The Great Gatsby"]`)).toHaveText('The Great Gatsby');
       await expect(page.locator(`_react=BookItem[name = "The Great Gatsby"]`)).toHaveCount(1);
-      // case sensitive by default
+      // case-sensitive by default
       await expect(page.locator(`_react=BookItem[name = "the great gatsby"]`)).toHaveCount(0);
       await expect(page.locator(`_react=BookItem[name = "the great gatsby" s]`)).toHaveCount(0);
       await expect(page.locator(`_react=BookItem[name = "the great gatsby" S]`)).toHaveCount(0);
