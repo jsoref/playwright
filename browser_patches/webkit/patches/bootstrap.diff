@@ -12266,7 +12266,7 @@ index 0000000000000000000000000000000000000000..f9af359a8b81babaf855132ec168feb2
 + * support transparency. Thus, default background color is used to replace
 + * transparent regions. The default background color is black if not specified
 + * explicitly. Thus converting e.g. PDF surfaces without having any specific
-+ * background color set will apear with black background and not white as you
++ * background color set will appear with black background and not white as you
 + * might expect. In such cases it is suggested to manually convert the surface
 + * to RGB24 before calling this function.
 + * @param data Pointer to a memory pointer. This parameter receives a pointer
