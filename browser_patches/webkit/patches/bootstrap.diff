@@ -1599,7 +1599,7 @@ index 52920cded24a9c6b0ef6fb4e518664955db4f9fa..bbbabc4e7259088b9404e8cc07eecd6f
                  { "name": "type", "type": "string", "enum": ["page", "service-worker", "worker"] },
 -                { "name": "isProvisional", "type": "boolean", "optional": true, "description": "Whether this is a provisional page target." },
 +                { "name": "isProvisional", "type": "boolean", "optional": true, "description": "True value indicates that this is a provisional page target i.e. Such target may be created when current page starts cross-origin navigation. Eventually each provisional target is either committed and swaps with the current target or gets destroyed, e.g. in case of load request failure." },
-                 { "name": "isPaused", "type": "boolean", "optional": true, "description": "Whether the target is paused on start and has to be explicitely resumed by inspector." }
+                 { "name": "isPaused", "type": "boolean", "optional": true, "description": "Whether the target is paused on start and has to be explicitly resumed by inspector." }
              ]
          }
 @@ -37,6 +37,21 @@
