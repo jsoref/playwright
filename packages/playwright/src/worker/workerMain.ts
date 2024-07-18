@@ -521,7 +521,7 @@ export class WorkerMain extends ProcessRunner {
             await this._fixtureRunner.resolveParametersAndRunFunction(hook.fn, testInfo, 'all-hooks-only', runnable);
           } finally {
             if (extraAnnotations) {
-              // Inherit all annotations defined in the beforeAll/modifer to all tests in the suite.
+              // Inherit all annotations defined in the beforeAll/modifier to all tests in the suite.
               const newAnnotations = testInfo.annotations.filter(a => !existingAnnotations.has(a));
               extraAnnotations.push(...newAnnotations);
             }
