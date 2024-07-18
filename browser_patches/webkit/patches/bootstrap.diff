@@ -3580,11 +3580,11 @@ index a5167242b6b1ee9d6ccfcd81ef86a5729882d3a4..d64c560f86db46786ba47fe55654c140
 +Protocol::ErrorStringOr<void> InspectorDOMAgent::setInputFiles(const String& objectId, RefPtr<JSON::Array>&& files, RefPtr<JSON::Array>&& paths) {
 +    InjectedScript injectedScript = m_injectedScriptManager.injectedScriptForObjectId(objectId);
 +    if (injectedScript.hasNoValue())
-+        return makeUnexpected("Can not find element's context for given id"_s);
++        return makeUnexpected("Cannot find element's context for given id"_s);
 +
 +    Node* node = scriptValueAsNode(injectedScript.findObjectById(objectId));
 +    if (!node)
-+        return makeUnexpected("Can not find element for given id"_s);
++        return makeUnexpected("Cannot find element for given id"_s);
 +
 +    if (node->nodeType() != Node::ELEMENT_NODE || node->nodeName() != "INPUT"_s)
 +        return makeUnexpected("Not an input node"_s);
