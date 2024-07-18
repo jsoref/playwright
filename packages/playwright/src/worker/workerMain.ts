@@ -68,7 +68,7 @@ export class WorkerMain extends ProcessRunner {
     this._params = params;
     this._fixtureRunner = new FixtureRunner();
 
-    // Resolve this promise, so worker does not stall waiting for the non-existent run to finish,
+    // Resolve this promise, so worker does not stall waiting for the nonexistent run to finish,
     // when it was sopped before running any test group.
     this._runFinished.resolve();
 

@@ -718,7 +718,7 @@ it('should respect cors overrides', async ({ page, server, browserName, isAndroi
       await route.fulfill({
         contentType: 'text/plain',
         status: 200,
-        headers: { 'Access-Control-Allow-Origin': 'http://non-existent' },
+        headers: { 'Access-Control-Allow-Origin': 'http://nonexistent' },
         body: 'done',
       });
     });

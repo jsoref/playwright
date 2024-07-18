@@ -423,7 +423,7 @@ test('should use proxy with connectOverCDP', async ({ browserType, server, mode 
       proxy: { server: `localhost:${server.PORT}` }
     });
     const page = await context.newPage();
-    await page.goto('http://non-existent.com/target.html');
+    await page.goto('http://nonexistent.com/target.html');
     expect(await page.title()).toBe('Served by the proxy');
     await cdpBrowser.close();
   } finally {
