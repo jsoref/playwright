@@ -1131,7 +1131,7 @@ index 5a4cf78d65eee0adcbeca33787706113eca19de7..7c8016e422ccc9e86563eaa83c9acc1d
      return true;
    }
  
-+  // Playwright: emulate focused page by never bluring when leaving document.
++  // Playwright: emulate focused page by never blurring when leaving document.
 +  if (XRE_IsContentProcess() && aIsLeavingDocument && docShell && nsDocShell::Cast(docShell)->ShouldOverrideHasFocus()) {
 +    return true;
 +  }
