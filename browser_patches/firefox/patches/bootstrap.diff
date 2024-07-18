@@ -1725,7 +1725,7 @@ index 7292f6c8a70298d4bf103080804843fa9bba1d15..7a50fee0d2fcaad475302d010892800a
    DesktopCaptureImpl(const int32_t aId, const char* aUniqueId,
 -                     const mozilla::camera::CaptureDeviceType aType);
 +                     const mozilla::camera::CaptureDeviceType aType,
-+                     bool aCaptureCusor);
++                     bool aCaptureCursor);
    virtual ~DesktopCaptureImpl();
  
   private:
