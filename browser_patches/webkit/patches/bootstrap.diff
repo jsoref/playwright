@@ -169,7 +169,7 @@ index 820a08fc660633e09675d0e647bd0c50d2fa905a..5ca5ee5a6897b7ef332d906018b45712
 +        return;
 +
      {
-         // We could be called re-entrantly from a nested run loop, so restore the previous id.
+         // We could be called reentrantly from a nested run loop, so restore the previous id.
          SetForScope scopedRequestId(m_currentRequestId, requestId);
 diff --git a/Source/JavaScriptCore/inspector/InspectorBackendDispatcher.h b/Source/JavaScriptCore/inspector/InspectorBackendDispatcher.h
 index 31957be19b946aa90d316dc978a301f80956dd9c..d1a01e7546996535eb3884524c251c50a998eb33 100644
