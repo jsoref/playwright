@@ -2742,7 +2742,7 @@ index 4573e28470c5112f5ac2c5dd53e7a9d1ceedb943..b53b86d8e39f1de4b0d0f1a8d5d7295e
 +      return rv;
 +    }
 +    if (isIntercepted) {
-+      LOG(("    request interceped by nsIDownloadInterceptor"));
++      LOG(("    request intercepted by nsIDownloadInterceptor"));
 +      if (fileToUse) {
 +        mTempFile = fileToUse;
 +        rv = mTempFile->GetLeafName(mTempLeafName);
