@@ -98,7 +98,7 @@ it('should work with correct credentials and matching origin', async ({ browser,
   await context.close();
 });
 
-it('should work with correct credentials and matching origin case insensitive', async ({ browser, server }) => {
+it('should work with correct credentials and matching origin case-insensitive', async ({ browser, server }) => {
   server.setAuth('/empty.html', 'user', 'pass');
   const context = await browser.newContext({
     httpCredentials: { username: 'user', password: 'pass', origin: server.PREFIX.toUpperCase() }

@@ -78,7 +78,7 @@ for (const [name, url] of Object.entries(vues)) {
       await expect(page.locator(`_vue=book-item[name = "the great gatsby"]`)).toHaveCount(0);
       await expect(page.locator(`_vue=book-item[name = "the great gatsby" s]`)).toHaveCount(0);
       await expect(page.locator(`_vue=book-item[name = "the great gatsby" S]`)).toHaveCount(0);
-      // case insensitive with flag
+      // case-insensitive with flag
       await expect(page.locator(`_vue=book-item[name = "the great gatsby" i]`)).toHaveCount(1);
       await expect(page.locator(`_vue=book-item[name = "the great gatsby" I]`)).toHaveCount(1);
       await expect(page.locator(`_vue=book-item[name = "  The Great Gatsby  "]`)).toHaveCount(0);
