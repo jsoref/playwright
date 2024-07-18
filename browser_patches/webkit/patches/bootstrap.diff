@@ -8063,7 +8063,7 @@ index 5728033e25919cef5b81d08516964aa5445c5d6e..0e588ebd34299d56ace86806bdec6e9c
 +        return;
 +    }
 +
-+    // this is the real real clipboard. Prbaobly need to be doing drag data stuff.
++    // this is the real real clipboard. Probably need to be doing drag data stuff.
      if (::OpenClipboard(m_owner)) {
          const auto& customData = data.first();
          customData.forEachPlatformStringOrBuffer([](auto& type, auto& stringOrBuffer) {
