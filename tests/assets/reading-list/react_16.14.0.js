@@ -2089,7 +2089,7 @@
 
     requestHostCallback = function (cb) {
       if (_callback !== null) {
-        // Protect against re-entrancy.
+        // Protect against reentrancy.
         setTimeout(requestHostCallback, 0, cb);
       } else {
         _callback = cb;
@@ -2510,7 +2510,7 @@
 
   var taskIdCounter = 1; // Pausing the scheduler is useful for debugging.
   var currentTask = null;
-  var currentPriorityLevel = NormalPriority; // This is set while performing work, to prevent re-entrancy.
+  var currentPriorityLevel = NormalPriority; // This is set while performing work, to prevent reentrancy.
 
   var isPerformingWork = false;
   var isHostCallbackScheduled = false;

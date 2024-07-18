@@ -11209,7 +11209,7 @@
 
   function flushSyncCallbackQueueImpl() {
     if (!isFlushingSyncQueue && syncQueue !== null) {
-      // Prevent re-entrancy.
+      // Prevent reentrancy.
       isFlushingSyncQueue = true;
       var i = 0;
 
@@ -14973,7 +14973,7 @@
         children = Component(props, secondArg);
       } while (workInProgress.expirationTime === renderExpirationTime);
     } // We can assume the previous dispatcher is always this one, since we set it
-    // at the beginning of the render phase and there's no re-entrancy.
+    // at the beginning of the render phase and there's no reentrancy.
 
 
     ReactCurrentDispatcher.current = ContextOnlyDispatcher;
@@ -15016,7 +15016,7 @@
   }
   function resetHooksAfterThrow() {
     // We can assume the previous dispatcher is always this one, since we set it
-    // at the beginning of the render phase and there's no re-entrancy.
+    // at the beginning of the render phase and there's no reentrancy.
     ReactCurrentDispatcher.current = ContextOnlyDispatcher;
 
     if (didScheduleRenderPhaseUpdate) {
