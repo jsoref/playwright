@@ -757,7 +757,7 @@ class PageTarget {
 
   ensureContextMenuClosed() {
     // Close context menu, if any, since it might capture mouse events on Linux
-    // and prevent browser shutdown on MacOS.
+    // and prevent browser shutdown on macOS.
     const doc = this._linkedBrowser.ownerDocument;
     const contextMenu = doc.getElementById('contentAreaContextMenu');
     if (contextMenu)

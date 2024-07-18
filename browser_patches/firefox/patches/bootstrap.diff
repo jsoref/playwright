@@ -2547,7 +2547,7 @@ index 517c87a285dd93220cb2654d6ba7bb05c66cdeb7..e3010421d8dbe5ed5ed72feedb9f1580
 +    // Whether this window has "width" or "height" defined in features
 +    const unsigned long JUGGLER_WINDOW_EXPLICIT_SIZE  = 0x00400000;
 +
-     // Prevents new window animations on MacOS and Windows. Currently
+     // Prevents new window animations on macOS and Windows. Currently
      // ignored for Linux.
      const unsigned long CHROME_SUPPRESS_ANIMATION     = 1 << 24;
 diff --git a/toolkit/components/enterprisepolicies/EnterprisePoliciesParent.sys.mjs b/toolkit/components/enterprisepolicies/EnterprisePoliciesParent.sys.mjs
