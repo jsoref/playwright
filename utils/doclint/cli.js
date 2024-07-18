@@ -77,7 +77,7 @@ async function run() {
     playwrightVersion = playwrightVersion.substring(0, playwrightVersion.indexOf('-next'));
 
   // Ensure browser versions in browsers.json. This is most important for WebKit
-  // since its version is hardcoded in Playwright library rather then in browser builds.
+  // since its version is hardcoded in Playwright library rather than in browser builds.
   // @see https://github.com/microsoft/playwright/issues/15702
   {
     const browsersJSONPath = path.join(__dirname, '..', '..', 'packages/playwright-core/browsers.json');
