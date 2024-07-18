@@ -904,7 +904,7 @@ index b5e2bb2eb58765ec20392b36bf5ef1ac35857a69..7e6c8b8954ed3d5d4ac77dfe51d0e08c
 +                { "name": "orientation", "type": "string", "optional": true, "description": "Whether the node is oriented horizontally or vertically."},
 +                { "name": "focusable", "type": "boolean", "optional": true, "description": "Whether the node is focusable."},
 +                { "name": "children", "type": "array", "optional": true, "items": { "$ref": "AXNode"}, "description": "Child AXNodes of this node, if any."},
-+                { "name": "found", "type": "boolean", "optional": true, "description": "True if this AXNode corresponds with the ObjectId passed into acessibilitySnapshot."}
++                { "name": "found", "type": "boolean", "optional": true, "description": "True if this AXNode corresponds with the ObjectId passed into accessibilitySnapshot."}
 +            ]
 +        },
 +        {
