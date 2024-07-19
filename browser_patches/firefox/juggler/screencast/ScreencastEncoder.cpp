@@ -369,7 +369,7 @@ void ScreencastEncoder::flushLastFrame()
 {
     TimeStamp now = TimeStamp::Now();
     if (m_lastFrameTimestamp) {
-        // If previous frame encoding failed for some rason leave the timestampt intact.
+        // If previous frame encoding failed for some rason leave the timestamp intact.
         if (!m_lastFrame)
             return;
 

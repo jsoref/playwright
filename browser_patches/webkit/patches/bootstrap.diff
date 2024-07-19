@@ -13151,7 +13151,7 @@ index 0000000000000000000000000000000000000000..90080e92c8278e73355c1fd4c571ea12
 +{
 +    MonotonicTime now = MonotonicTime::now();
 +    if (m_lastFrameTimestamp) {
-+        // If previous frame encoding failed for some rason leave the timestampt intact.
++        // If previous frame encoding failed for some rason leave the timestamp intact.
 +        if (!m_lastFrame)
 +            return;
 +
