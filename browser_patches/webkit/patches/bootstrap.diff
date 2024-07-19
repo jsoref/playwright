@@ -4061,7 +4061,7 @@ index 5329fd0a2c24031a74d05d7c6c342a5f8398eaae..a64e486220e4fc8e37c34856fce8c3d8
 +static String globalIDForFrame(Frame& frame)
 +{
 +    // TODO(playwright): for OOPIF we have to use id of the web process where the frame is hosted.
-+    // Working at the moment because OOPIF is diabled.
++    // Working at the moment because OOPIF is disabled.
 +    return InspectorPageAgent::makeFrameID(Process::identifier(), frame.frameID());
 +}
 +
