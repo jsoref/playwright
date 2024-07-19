@@ -5067,7 +5067,7 @@ index 61b797e08f5e6d90cc2724dd7a3b45c0f45af4f8..919a8b963d93742cc99c2739e472361d
 +void PageRuntimeAgent::didReceiveMainResourceError(LocalFrame& frame)
 +{
 +    if (frame.loader().stateMachine().isDisplayingInitialEmptyDocument()) {
-+        // Ensure execution context is created for the empty docment to make
++        // Ensure execution context is created for the empty document to make
 +        // it usable in case loading failed.
 +        mainWorldGlobalObject(frame);
 +    }
