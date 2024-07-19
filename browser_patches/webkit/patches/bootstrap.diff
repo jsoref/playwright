@@ -15545,7 +15545,7 @@ index 46f725b53f67ed41ff3312d106a23174d6a16363..369ee3539762a6286977d94a7958b252
  #endif
  
 -#if PLATFORM(COCOA) || PLATFORM(GTK)
-+// Paywright begin
++// Playwright begin
 +#if PLATFORM(COCOA)
 +    virtual RetainPtr<CGImageRef> takeSnapshotForAutomation() = 0;
 +#elif PLATFORM(WPE)
@@ -15553,7 +15553,7 @@ index 46f725b53f67ed41ff3312d106a23174d6a16363..369ee3539762a6286977d94a7958b252
 +#elif PLATFORM(GTK)
 +    virtual RefPtr<ViewSnapshot> takeViewSnapshot(std::optional<WebCore::IntRect>&&, bool nominalResolution = false) = 0;
 +#endif
-+// Paywright end
++// Playwright end
 +#if PLATFORM(COCOA)
      virtual RefPtr<ViewSnapshot> takeViewSnapshot(std::optional<WebCore::IntRect>&&) = 0;
  #endif
@@ -18745,9 +18745,9 @@ index 1647891b55a718f66ee2f4a084439edd655c623a..2099b9166e2cac062d4161d704050a07
      void updateAcceleratedCompositingMode(const LayerTreeContext&) override;
      void didFirstLayerFlush(const LayerTreeContext&) override;
  
-+// Paywright begin
++// Playwright begin
 +    RetainPtr<CGImageRef> takeSnapshotForAutomation() override;
-+// Paywright end
++// Playwright end
      RefPtr<ViewSnapshot> takeViewSnapshot(std::optional<WebCore::IntRect>&&) override;
      void wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent&) override;
  #if ENABLE(MAC_GESTURE_EVENTS)
@@ -18850,11 +18850,11 @@ index 3fe2a9487a96b31f476bb17e45374f880e80da9a..b72433e5981f298d4d1ca93274df51cd
      return m_impl->footerBannerLayer();
  }
  
-+// Paywright begin
++// Playwright begin
 +RetainPtr<CGImageRef> PageClientImpl::takeSnapshotForAutomation() {
 +    return m_impl->takeSnapshotForAutomation();
 +}
-+// Paywright begin
++// Playwright begin
 +
  RefPtr<ViewSnapshot> PageClientImpl::takeViewSnapshot(std::optional<WebCore::IntRect>&&)
  {
@@ -19124,9 +19124,9 @@ index 363c8b384c7e2e2379f06903c77c7d139e1a454f..b0ca037bc8741ec245d9afefa2be734e
      void provideDataForPasteboard(NSPasteboard *, NSString *type);
      NSArray *namesOfPromisedFilesDroppedAtDestination(NSURL *dropDestination);
  
-+// Paywright begin
++// Playwright begin
 +    RetainPtr<CGImageRef> takeSnapshotForAutomation();
-+// Paywright end
++// Playwright end
      RefPtr<ViewSnapshot> takeViewSnapshot();
      void saveBackForwardSnapshotForCurrentItem();
      void saveBackForwardSnapshotForItem(WebBackForwardListItem&);
@@ -19150,7 +19150,7 @@ index b12b690eff989c9f4235c874360e26543c3e95ee..e8be29392d3c1765fc977f8a0036a24e
  ALLOW_DEPRECATED_DECLARATIONS_END
  }
  
-+// Paywright begin
++// Playwright begin
 +RetainPtr<CGImageRef> WebViewImpl::takeSnapshotForAutomation() {
 +    NSWindow *window = [m_view window];
 +
@@ -19160,7 +19160,7 @@ index b12b690eff989c9f4235c874360e26543c3e95ee..e8be29392d3c1765fc977f8a0036a24e
 +
 +    return takeWindowSnapshot(windowID, true);
 +}
-+// Paywright end
++// Playwright end
 +
  RefPtr<ViewSnapshot> WebViewImpl::takeViewSnapshot()
  {
@@ -21612,7 +21612,7 @@ index 2ed9985c35980ba0fca09c2fc9ea5ab300b19b00..a5f773d071cb67025b16614a998bd093
  SET_AND_EXPOSE_TO_BUILD(ENABLE_WEBDRIVER_KEYBOARD_INTERACTIONS ON)
  SET_AND_EXPOSE_TO_BUILD(ENABLE_WEBDRIVER_MOUSE_INTERACTIONS ON)
  
-+# Plawright begin
++# Playwright begin
 +WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_DARK_MODE_CSS PRIVATE ON)
 +WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_DEVICE_ORIENTATION PRIVATE ON)
 +WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_NOTIFICATIONS PRIVATE ON)
@@ -21772,13 +21772,13 @@ index bd00606c26b6fedb75978ed26a9b07f4b70828d8..8460a4ae5ff7461e3435fe2e704bb04e
      widgetClass->delete_event = browserWindowDeleteEvent;
  #endif
 +
-+// Playwrigth begin
++// Playwright begin
 +    // Override preferred (which is minimum :-) size to 0 so that we can
 +    // emulate arbitrary resolution.
 +    GtkWidgetClass* browserWidgetClass = GTK_WIDGET_CLASS(klass);
 +    browserWidgetClass->get_preferred_width = zeroPreferredSize;
 +    browserWidgetClass->get_preferred_height = zeroPreferredSize;
-+// Playwrigth end
++// Playwright end
  }
  
  /* Public API. */
