@@ -3352,9 +3352,9 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
         spec.displayName || 'A component'
       );
       warning(
-        !Constructor.prototype.componentWillRecieveProps,
+        !Constructor.prototype.componentWillReceiveProps,
         '%s has a method called ' +
-          'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?',
+          'componentWillReceiveProps(). Did you mean componentWillReceiveProps()?',
         spec.displayName || 'A component'
       );
     }
