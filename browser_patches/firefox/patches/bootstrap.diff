@@ -271,7 +271,7 @@ index 5ec95a61e4d3af265cbe7dd9d83f6535da1d103e..f8acafe6d58c429af27a38363e06ad54
 +
    bool IsInBFCache() const;
  
-   bool AllowJavascript() const { return GetAllowJavascript(); }
+   bool AllowJavaScript() const { return GetAllowJavaScript(); }
 @@ -1090,6 +1102,23 @@ class BrowsingContext : public nsILoadContext, public nsWrapperCache {
    void WalkPresContexts(Callback&&);
    void PresContextAffectingFieldChanged();
@@ -1131,7 +1131,7 @@ index 5a4cf78d65eee0adcbeca33787706113eca19de7..7c8016e422ccc9e86563eaa83c9acc1d
      return true;
    }
  
-+  // Playwright: emulate focused page by never bluring when leaving document.
++  // Playwright: emulate focused page by never blurring when leaving document.
 +  if (XRE_IsContentProcess() && aIsLeavingDocument && docShell && nsDocShell::Cast(docShell)->ShouldOverrideHasFocus()) {
 +    return true;
 +  }
@@ -1144,7 +1144,7 @@ index 5a4cf78d65eee0adcbeca33787706113eca19de7..7c8016e422ccc9e86563eaa83c9acc1d
    }
  
 -  if (sTestMode) {
-+  // In Playwright, we still want to execte the embedder functions
++  // In Playwright, we still want to execute the embedder functions
 +  // to actually show / focus windows.
 +  if (false && sTestMode) {
      // In test mode, emulate raising the window. WindowRaised takes
@@ -1725,7 +1725,7 @@ index 7292f6c8a70298d4bf103080804843fa9bba1d15..7a50fee0d2fcaad475302d010892800a
    DesktopCaptureImpl(const int32_t aId, const char* aUniqueId,
 -                     const mozilla::camera::CaptureDeviceType aType);
 +                     const mozilla::camera::CaptureDeviceType aType,
-+                     bool aCaptureCusor);
++                     bool aCaptureCursor);
    virtual ~DesktopCaptureImpl();
  
   private:
@@ -2547,7 +2547,7 @@ index 517c87a285dd93220cb2654d6ba7bb05c66cdeb7..e3010421d8dbe5ed5ed72feedb9f1580
 +    // Whether this window has "width" or "height" defined in features
 +    const unsigned long JUGGLER_WINDOW_EXPLICIT_SIZE  = 0x00400000;
 +
-     // Prevents new window animations on MacOS and Windows. Currently
+     // Prevents new window animations on macOS and Windows. Currently
      // ignored for Linux.
      const unsigned long CHROME_SUPPRESS_ANIMATION     = 1 << 24;
 diff --git a/toolkit/components/enterprisepolicies/EnterprisePoliciesParent.sys.mjs b/toolkit/components/enterprisepolicies/EnterprisePoliciesParent.sys.mjs
@@ -2738,11 +2738,11 @@ index 4573e28470c5112f5ac2c5dd53e7a9d1ceedb943..b53b86d8e39f1de4b0d0f1a8d5d7295e
 +    nsCOMPtr<nsIFile> fileToUse;
 +    rv = interceptor->InterceptDownloadRequest(this, request, mBrowsingContext, getter_AddRefs(fileToUse), &isIntercepted);
 +    if (!NS_SUCCEEDED(rv)) {
-+      LOG(("    failed to call nsIDowloadInterceptor.interceptDownloadRequest"));
++      LOG(("    failed to call nsIDownloadInterceptor.interceptDownloadRequest"));
 +      return rv;
 +    }
 +    if (isIntercepted) {
-+      LOG(("    request interceped by nsIDowloadInterceptor"));
++      LOG(("    request intercepted by nsIDownloadInterceptor"));
 +      if (fileToUse) {
 +        mTempFile = fileToUse;
 +        rv = mTempFile->GetLeafName(mTempLeafName);
@@ -2756,7 +2756,7 @@ index 4573e28470c5112f5ac2c5dd53e7a9d1ceedb943..b53b86d8e39f1de4b0d0f1a8d5d7295e
 +
 +  // Temp file is the final destination when download is intercepted. In that
 +  // case we only need to create saver (and not create transfer later). Not creating
-+  // mTransfer also cuts off all downloads handling logic in the js compoenents and
++  // mTransfer also cuts off all downloads handling logic in the js components and
 +  // browser UI.
 +  if (isIntercepted)
 +    rv = CreateSaverForTempFile();
@@ -2784,7 +2784,7 @@ index 4573e28470c5112f5ac2c5dd53e7a9d1ceedb943..b53b86d8e39f1de4b0d0f1a8d5d7295e
 +    if (interceptor) {
 +      nsCString noError;
 +      nsresult rv = interceptor->OnDownloadComplete(this, noError);
-+      MOZ_ASSERT(NS_SUCCEEDED(rv), "Failed to call nsIDowloadInterceptor.OnDownloadComplete");
++      MOZ_ASSERT(NS_SUCCEEDED(rv), "Failed to call nsIDownloadInterceptor.OnDownloadComplete");
 +      Unused << rv;
 +    }
 +  }
@@ -2801,7 +2801,7 @@ index 4573e28470c5112f5ac2c5dd53e7a9d1ceedb943..b53b86d8e39f1de4b0d0f1a8d5d7295e
 +    nsCString errorName;
 +    GetErrorName(aReason, errorName);
 +    nsresult rv = interceptor->OnDownloadComplete(this, errorName);
-+    MOZ_ASSERT(NS_SUCCEEDED(rv), "Failed notify nsIDowloadInterceptor about cancel");
++    MOZ_ASSERT(NS_SUCCEEDED(rv), "Failed notify nsIDownloadInterceptor about cancel");
 +    Unused << rv;
 +  }
 +

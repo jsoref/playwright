@@ -435,7 +435,7 @@
    * and Temporal.* types. See https://github.com/facebook/react/pull/22064.
    *
    * The functions in this module will throw an easier-to-understand,
-   * easier-to-debug exception with a clear errors message message explaining the
+   * easier-to-debug exception with a clear error message explaining the
    * problem. (Instead of a confusing exception thrown inside the implementation
    * of the `value` object).
    */
@@ -490,7 +490,7 @@
   function checkKeyStringCoercion(value) {
     {
       if (willCoercionThrow(value)) {
-        error('The provided key is an unsupported type %s.' + ' This value must be coerced to a string before before using it here.', typeName(value));
+        error('The provided key is an unsupported type %s.' + ' This value must be coerced to a string before using it here.', typeName(value));
 
         return testStringCoercion(value); // throw (to help callers find troubleshooting comments)
       }

@@ -4633,7 +4633,7 @@ var ReactCompositeComponent = {
 
     if ("development" !== 'production') {
       // Since plain JS classes are defined without any special initialization
-      // logic, we can not catch common errors early. Therefore, we have to
+      // logic, we cannot catch common errors early. Therefore, we have to
       // catch them here, at initialization time, instead.
       "development" !== 'production' ? warning(!inst.getInitialState || inst.getInitialState.isReactClassApproved || inst.state, 'getInitialState was defined on %s, a plain JavaScript class. ' + 'This is only supported for classes created using React.createClass. ' + 'Did you mean to define a state property instead?', this.getName() || 'a component') : void 0;
       "development" !== 'production' ? warning(!inst.getDefaultProps || inst.getDefaultProps.isReactClassApproved, 'getDefaultProps was defined on %s, a plain JavaScript class. ' + 'This is only supported for classes created using React.createClass. ' + 'Use a static property to define defaultProps instead.', this.getName() || 'a component') : void 0;

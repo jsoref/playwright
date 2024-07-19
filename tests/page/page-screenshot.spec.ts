@@ -530,7 +530,7 @@ it.describe('page screenshot', () => {
       const done = page.setContent(`<iframe src='/subframe.html'></iframe>`);
       const route = await routeReady;
 
-      await page.screenshot({ mask: [page.locator('non-existent')] });
+      await page.screenshot({ mask: [page.locator('nonexistent')] });
       await route.fulfill({ body: '' });
       await done;
     });
@@ -545,7 +545,7 @@ it.describe('page screenshot', () => {
         iframe.contentDocument.write('Hello');
         iframe.contentDocument.close();
       });
-      await page.screenshot({ mask: [page.locator('non-existent')] });
+      await page.screenshot({ mask: [page.locator('nonexistent')] });
     });
 
     it('should work when mask color is not pink #F0F', async ({ page, server }) => {

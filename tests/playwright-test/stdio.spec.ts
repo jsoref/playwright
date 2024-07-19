@@ -84,7 +84,7 @@ test('should support console colors but not tty', {
     { type: 'issue', description: 'https://github.com/microsoft/playwright/issues/29839' },
   ],
 }, async ({ runInlineTest, nodeVersion }) => {
-  test.skip(nodeVersion.major < 18, 'Node16 does not respect FORCE_COLOR in onsole');
+  test.skip(nodeVersion.major < 18, 'Node16 does not respect FORCE_COLOR in console');
 
   const result = await runInlineTest({
     'a.spec.js': `

@@ -228,7 +228,7 @@ test('should match regex string with a colon argument', async ({ runInlineTest }
   expect(result.exitCode).toBe(0);
 });
 
-test('should match case insensitive', async ({ runInlineTest }) => {
+test('should match case-insensitive', async ({ runInlineTest }) => {
   const result = await runInlineTest({
     'capital/A.test.ts': `
       import { test, expect } from '@playwright/test';

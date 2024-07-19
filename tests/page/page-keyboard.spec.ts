@@ -352,7 +352,7 @@ it('should be able to prevent selectAll', async ({ page, server, isMac }) => {
   expect(await page.$eval('textarea', textarea => textarea.value)).toBe('some tex');
 });
 
-it('should support MacOS shortcuts', async ({ page, server, platform, browserName }) => {
+it('should support macOS shortcuts', async ({ page, server, platform, browserName }) => {
   it.skip(platform !== 'darwin');
   // @see https://github.com/microsoft/playwright/issues/5721
   it.fixme(browserName === 'firefox' && platform === 'darwin');
@@ -658,7 +658,7 @@ async function captureLastKeydown(page) {
 }
 
 it('should dispatch insertText after context menu was opened', async ({ server, page, browserName, isWindows }) => {
-  it.skip(browserName === 'chromium' && isWindows, 'context menu support is best-effort for Linux and MacOS');
+  it.skip(browserName === 'chromium' && isWindows, 'context menu support is best-effort for Linux and macOS');
   await page.goto(server.PREFIX + '/input/textarea.html');
   await page.evaluate(() => {
     window['contextMenuPromise'] = new Promise(x => {
@@ -677,7 +677,7 @@ it('should dispatch insertText after context menu was opened', async ({ server, 
 });
 
 it('should type after context menu was opened', async ({ server, page, browserName, isWindows }) => {
-  it.skip(browserName === 'chromium' && isWindows, 'context menu support is best-effort for Linux and MacOS');
+  it.skip(browserName === 'chromium' && isWindows, 'context menu support is best-effort for Linux and macOS');
   await page.evaluate(() => {
     window['keys'] = [];
     window.addEventListener('keydown', event => window['keys'].push(event.key));

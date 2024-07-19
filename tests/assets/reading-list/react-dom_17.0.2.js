@@ -5972,7 +5972,7 @@
       if (queueIfContinuousEvent(blockedOn, domEventName, eventSystemFlags, targetContainer, nativeEvent)) {
         return;
       } // We need to clear only if we didn't queue because
-      // queueing is accummulative.
+      // queueing is cumulative.
 
 
       clearIfContinuousEvent(domEventName, nativeEvent);
@@ -11341,7 +11341,7 @@
 
   function flushSyncCallbackQueueImpl() {
     if (!isFlushingSyncQueue && syncQueue !== null) {
-      // Prevent re-entrancy.
+      // Prevent reentrancy.
       isFlushingSyncQueue = true;
       var i = 0;
 
@@ -15050,7 +15050,7 @@
         children = Component(props, secondArg);
       } while (didScheduleRenderPhaseUpdateDuringThisPass);
     } // We can assume the previous dispatcher is always this one, since we set it
-    // at the beginning of the render phase and there's no re-entrancy.
+    // at the beginning of the render phase and there's no reentrancy.
 
 
     ReactCurrentDispatcher$1.current = ContextOnlyDispatcher;
@@ -15090,7 +15090,7 @@
   }
   function resetHooksAfterThrow() {
     // We can assume the previous dispatcher is always this one, since we set it
-    // at the beginning of the render phase and there's no re-entrancy.
+    // at the beginning of the render phase and there's no reentrancy.
     ReactCurrentDispatcher$1.current = ContextOnlyDispatcher;
 
     if (didScheduleRenderPhaseUpdate) {
@@ -17222,7 +17222,7 @@
           // The pending lanes were cleared at the beginning of beginWork. We're
           // about to bail out, but there might be other lanes that weren't
           // included in the current render. Usually, the priority level of the
-          // remaining updates is accumlated during the evaluation of the
+          // remaining updates is accumulated during the evaluation of the
           // component (i.e. when processing the update queue). But since since
           // we're bailing out early *without* evaluating the component, we need
           // to account for it here, too. Reset to the value of the current fiber.
@@ -19442,7 +19442,7 @@
               // Schedule an effect to clear this container at the start of the next commit.
               // This handles the case of React rendering into a container with previous children.
               // It's also safe to do for updates too, because current.child would only be null
-              // if the previous render was null (so the the container would already be empty).
+              // if the previous render was null (so the container would already be empty).
               workInProgress.flags |= Snapshot;
             }
           }

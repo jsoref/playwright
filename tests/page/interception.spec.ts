@@ -173,9 +173,9 @@ it('should not break remote worker importScripts', async ({ page, server, browse
 });
 
 it('should disable memory cache when intercepting', async ({ page, server }) => {
-  let interceted = 0;
+  let intercepted = 0;
   await page.route('**/page.html', route => {
-    ++interceted;
+    ++intercepted;
     void route.fulfill({
       body: 'success'
     });
@@ -184,8 +184,8 @@ it('should disable memory cache when intercepting', async ({ page, server }) => 
   expect(await page.locator('body').textContent()).toContain('success');
   await page.goto(server.EMPTY_PAGE);
   await expect(page).toHaveURL(server.EMPTY_PAGE);
-  expect(interceted).toBe(1);
+  expect(intercepted).toBe(1);
   await page.goBack();
   await expect(page).toHaveURL(server.PREFIX + '/page.html');
-  expect(interceted).toBe(2);
+  expect(intercepted).toBe(2);
 });

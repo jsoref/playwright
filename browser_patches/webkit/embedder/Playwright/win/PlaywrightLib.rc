@@ -221,7 +221,7 @@ BEGIN
     EDITTEXT        IDC_PROXY_URL,76,52,193,14,ES_AUTOHSCROLL
     EDITTEXT        IDC_PROXY_EXCLUDE,76,85,193,14,ES_AUTOHSCROLL
     LTEXT           "URL:",IDC_STATIC,30,55,43,8,0,WS_EX_RIGHT
-    LTEXT           "Excude list:",IDC_STATIC,30,88,43,8,0,WS_EX_RIGHT
+    LTEXT           "Exclude list:",IDC_STATIC,30,88,43,8,0,WS_EX_RIGHT
     LTEXT           "Example: http://192.168.0.2:8000",IDC_STATIC,80,68,194,8
     LTEXT           "Comma separated hostnames.",IDC_STATIC,80,101,194,8
 END

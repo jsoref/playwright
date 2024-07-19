@@ -68,7 +68,7 @@ export class WorkerMain extends ProcessRunner {
     this._params = params;
     this._fixtureRunner = new FixtureRunner();
 
-    // Resolve this promise, so worker does not stall waiting for the non-existent run to finish,
+    // Resolve this promise, so worker does not stall waiting for the nonexistent run to finish,
     // when it was sopped before running any test group.
     this._runFinished.resolve();
 
@@ -521,7 +521,7 @@ export class WorkerMain extends ProcessRunner {
             await this._fixtureRunner.resolveParametersAndRunFunction(hook.fn, testInfo, 'all-hooks-only', runnable);
           } finally {
             if (extraAnnotations) {
-              // Inherit all annotations defined in the beforeAll/modifer to all tests in the suite.
+              // Inherit all annotations defined in the beforeAll/modifier to all tests in the suite.
               const newAnnotations = testInfo.annotations.filter(a => !existingAnnotations.has(a));
               extraAnnotations.push(...newAnnotations);
             }

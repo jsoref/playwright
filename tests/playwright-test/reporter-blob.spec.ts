@@ -279,8 +279,8 @@ test('should merge blob into blob', async ({ runInlineTest, mergeReports, showRe
     expect(exitCode).toBe(0);
   }
   {
-    const compinedBlobReportDir = test.info().outputPath('blob-report');
-    const { exitCode } = await mergeReports(compinedBlobReportDir, { 'PLAYWRIGHT_HTML_OPEN': 'never' }, { additionalArgs: ['--reporter', 'html,json'] });
+    const combinedBlobReportDir = test.info().outputPath('blob-report');
+    const { exitCode } = await mergeReports(combinedBlobReportDir, { 'PLAYWRIGHT_HTML_OPEN': 'never' }, { additionalArgs: ['--reporter', 'html,json'] });
     expect(exitCode).toBe(0);
     expect(fs.existsSync(test.info().outputPath('report.json'))).toBe(true);
     await showReport();

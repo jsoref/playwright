@@ -550,7 +550,7 @@ percentage [0 - 100] for scroll driven animations
     export type enableReturnValue = {
     }
     /**
-     * Returns the current time of the an animation.
+     * Returns the current time of the animation.
      */
     export type getCurrentTimeParameters = {
       /**
@@ -854,7 +854,7 @@ Explainer: https://github.com/WICG/attribution-reporting-api
     }
     /**
      * Details for issues about documents in Quirks Mode
-or Limited Quirks Mode that affects page layouting.
+or Limited Quirks Mode that affects page layout.
      */
     export interface QuirksModeIssueDetails {
       /**
@@ -3769,7 +3769,7 @@ The property is always undefined now.
        */
       nodeId: NodeId;
       /**
-       * A ttribute name.
+       * Attribute name.
        */
       name: string;
     }
@@ -6095,7 +6095,7 @@ Does nothing if no override is set.
     }
     export type setDocumentCookieDisabledParameters = {
       /**
-       * Whether document.coookie API should be disabled.
+       * Whether document.cookie API should be disabled.
        */
       disabled: boolean;
     }
@@ -8397,7 +8397,7 @@ records.
     export interface ServiceWorkerRouterInfo {
       /**
        * ID of the rule matched. If there is a matched rule, this field will
-be set, otherwiser no value will be set.
+be set, otherwise no value will be set.
        */
       ruleIdMatched?: number;
       /**
@@ -9690,7 +9690,7 @@ the response with the corresponding reason.
     /**
      * Fired when 103 Early Hints headers is received in addition to the common response.
 Not every responseReceived event will have an responseReceivedEarlyHints fired.
-Only one responseReceivedEarlyHints may be fired for eached responseReceived event.
+Only one responseReceivedEarlyHints may be fired for each responseReceived event.
      */
     export type responseReceivedEarlyHintsPayload = {
       /**
@@ -9952,7 +9952,7 @@ provided URL.
        */
       path?: string;
       /**
-       * If specified, deletes only cookies with the the given name and partitionKey where
+       * If specified, deletes only cookies with the given name and partitionKey where
 all partition key attributes match the cookie partition key attribute.
        */
       partitionKey?: CookiePartitionKey;
@@ -10158,7 +10158,7 @@ attribute, user, password.
        */
       query: string;
       /**
-       * If true, search is case sensitive.
+       * If true, search is case-sensitive.
        */
       caseSensitive?: boolean;
       /**
@@ -11518,7 +11518,7 @@ Example URLs: http://www.google.com/file.html -> "google.com"
       timestamp?: Network.TimeSinceEpoch;
     }
     /**
-     * Javascript dialog type.
+     * JavaScript dialog type.
      */
     export type DialogType = "alert"|"confirm"|"prompt"|"beforeunload";
     /**
@@ -11815,7 +11815,7 @@ for easy understanding and comparison.
       dir?: string;
       display?: string;
       /**
-       * The overrided display mode controlled by the user.
+       * The overridden display mode controlled by the user.
        */
       displayOverrides?: string[];
       /**
@@ -11866,7 +11866,7 @@ https://github.com/WICG/manifest-incubations/blob/gh-pages/scope_extensions-expl
     /**
      * List of not restored reasons for back-forward cache.
      */
-    export type BackForwardCacheNotRestoredReason = "NotPrimaryMainFrame"|"BackForwardCacheDisabled"|"RelatedActiveContentsExist"|"HTTPStatusNotOK"|"SchemeNotHTTPOrHTTPS"|"Loading"|"WasGrantedMediaAccess"|"DisableForRenderFrameHostCalled"|"DomainNotAllowed"|"HTTPMethodNotGET"|"SubframeIsNavigating"|"Timeout"|"CacheLimit"|"JavaScriptExecution"|"RendererProcessKilled"|"RendererProcessCrashed"|"SchedulerTrackedFeatureUsed"|"ConflictingBrowsingInstance"|"CacheFlushed"|"ServiceWorkerVersionActivation"|"SessionRestored"|"ServiceWorkerPostMessage"|"EnteredBackForwardCacheBeforeServiceWorkerHostAdded"|"RenderFrameHostReused_SameSite"|"RenderFrameHostReused_CrossSite"|"ServiceWorkerClaim"|"IgnoreEventAndEvict"|"HaveInnerContents"|"TimeoutPuttingInCache"|"BackForwardCacheDisabledByLowMemory"|"BackForwardCacheDisabledByCommandLine"|"NetworkRequestDatapipeDrainedAsBytesConsumer"|"NetworkRequestRedirected"|"NetworkRequestTimeout"|"NetworkExceedsBufferLimit"|"NavigationCancelledWhileRestoring"|"NotMostRecentNavigationEntry"|"BackForwardCacheDisabledForPrerender"|"UserAgentOverrideDiffers"|"ForegroundCacheLimit"|"BrowsingInstanceNotSwapped"|"BackForwardCacheDisabledForDelegate"|"UnloadHandlerExistsInMainFrame"|"UnloadHandlerExistsInSubFrame"|"ServiceWorkerUnregistration"|"CacheControlNoStore"|"CacheControlNoStoreCookieModified"|"CacheControlNoStoreHTTPOnlyCookieModified"|"NoResponseHead"|"Unknown"|"ActivationNavigationsDisallowedForBug1234857"|"ErrorDocument"|"FencedFramesEmbedder"|"CookieDisabled"|"HTTPAuthRequired"|"CookieFlushed"|"BroadcastChannelOnMessage"|"WebViewSettingsChanged"|"WebViewJavaScriptObjectChanged"|"WebViewMessageListenerInjected"|"WebViewSafeBrowsingAllowlistChanged"|"WebViewDocumentStartJavascriptChanged"|"WebSocket"|"WebTransport"|"WebRTC"|"MainResourceHasCacheControlNoStore"|"MainResourceHasCacheControlNoCache"|"SubresourceHasCacheControlNoStore"|"SubresourceHasCacheControlNoCache"|"ContainsPlugins"|"DocumentLoaded"|"OutstandingNetworkRequestOthers"|"RequestedMIDIPermission"|"RequestedAudioCapturePermission"|"RequestedVideoCapturePermission"|"RequestedBackForwardCacheBlockedSensors"|"RequestedBackgroundWorkPermission"|"BroadcastChannel"|"WebXR"|"SharedWorker"|"WebLocks"|"WebHID"|"WebShare"|"RequestedStorageAccessGrant"|"WebNfc"|"OutstandingNetworkRequestFetch"|"OutstandingNetworkRequestXHR"|"AppBanner"|"Printing"|"WebDatabase"|"PictureInPicture"|"Portal"|"SpeechRecognizer"|"IdleManager"|"PaymentManager"|"SpeechSynthesis"|"KeyboardLock"|"WebOTPService"|"OutstandingNetworkRequestDirectSocket"|"InjectedJavascript"|"InjectedStyleSheet"|"KeepaliveRequest"|"IndexedDBEvent"|"Dummy"|"JsNetworkRequestReceivedCacheControlNoStoreResource"|"WebRTCSticky"|"WebTransportSticky"|"WebSocketSticky"|"SmartCard"|"LiveMediaStreamTrack"|"UnloadHandler"|"ParserAborted"|"ContentSecurityHandler"|"ContentWebAuthenticationAPI"|"ContentFileChooser"|"ContentSerial"|"ContentFileSystemAccess"|"ContentMediaDevicesDispatcherHost"|"ContentWebBluetooth"|"ContentWebUSB"|"ContentMediaSessionService"|"ContentScreenReader"|"EmbedderPopupBlockerTabHelper"|"EmbedderSafeBrowsingTriggeredPopupBlocker"|"EmbedderSafeBrowsingThreatDetails"|"EmbedderAppBannerManager"|"EmbedderDomDistillerViewerSource"|"EmbedderDomDistillerSelfDeletingRequestDelegate"|"EmbedderOomInterventionTabHelper"|"EmbedderOfflinePage"|"EmbedderChromePasswordManagerClientBindCredentialManager"|"EmbedderPermissionRequestManager"|"EmbedderModalDialog"|"EmbedderExtensions"|"EmbedderExtensionMessaging"|"EmbedderExtensionMessagingForOpenPort"|"EmbedderExtensionSentMessageToCachedFrame"|"RequestedByWebViewClient";
+    export type BackForwardCacheNotRestoredReason = "NotPrimaryMainFrame"|"BackForwardCacheDisabled"|"RelatedActiveContentsExist"|"HTTPStatusNotOK"|"SchemeNotHTTPOrHTTPS"|"Loading"|"WasGrantedMediaAccess"|"DisableForRenderFrameHostCalled"|"DomainNotAllowed"|"HTTPMethodNotGET"|"SubframeIsNavigating"|"Timeout"|"CacheLimit"|"JavaScriptExecution"|"RendererProcessKilled"|"RendererProcessCrashed"|"SchedulerTrackedFeatureUsed"|"ConflictingBrowsingInstance"|"CacheFlushed"|"ServiceWorkerVersionActivation"|"SessionRestored"|"ServiceWorkerPostMessage"|"EnteredBackForwardCacheBeforeServiceWorkerHostAdded"|"RenderFrameHostReused_SameSite"|"RenderFrameHostReused_CrossSite"|"ServiceWorkerClaim"|"IgnoreEventAndEvict"|"HaveInnerContents"|"TimeoutPuttingInCache"|"BackForwardCacheDisabledByLowMemory"|"BackForwardCacheDisabledByCommandLine"|"NetworkRequestDatapipeDrainedAsBytesConsumer"|"NetworkRequestRedirected"|"NetworkRequestTimeout"|"NetworkExceedsBufferLimit"|"NavigationCancelledWhileRestoring"|"NotMostRecentNavigationEntry"|"BackForwardCacheDisabledForPrerender"|"UserAgentOverrideDiffers"|"ForegroundCacheLimit"|"BrowsingInstanceNotSwapped"|"BackForwardCacheDisabledForDelegate"|"UnloadHandlerExistsInMainFrame"|"UnloadHandlerExistsInSubFrame"|"ServiceWorkerUnregistration"|"CacheControlNoStore"|"CacheControlNoStoreCookieModified"|"CacheControlNoStoreHTTPOnlyCookieModified"|"NoResponseHead"|"Unknown"|"ActivationNavigationsDisallowedForBug1234857"|"ErrorDocument"|"FencedFramesEmbedder"|"CookieDisabled"|"HTTPAuthRequired"|"CookieFlushed"|"BroadcastChannelOnMessage"|"WebViewSettingsChanged"|"WebViewJavaScriptObjectChanged"|"WebViewMessageListenerInjected"|"WebViewSafeBrowsingAllowlistChanged"|"WebViewDocumentStartJavaScriptChanged"|"WebSocket"|"WebTransport"|"WebRTC"|"MainResourceHasCacheControlNoStore"|"MainResourceHasCacheControlNoCache"|"SubresourceHasCacheControlNoStore"|"SubresourceHasCacheControlNoCache"|"ContainsPlugins"|"DocumentLoaded"|"OutstandingNetworkRequestOthers"|"RequestedMIDIPermission"|"RequestedAudioCapturePermission"|"RequestedVideoCapturePermission"|"RequestedBackForwardCacheBlockedSensors"|"RequestedBackgroundWorkPermission"|"BroadcastChannel"|"WebXR"|"SharedWorker"|"WebLocks"|"WebHID"|"WebShare"|"RequestedStorageAccessGrant"|"WebNfc"|"OutstandingNetworkRequestFetch"|"OutstandingNetworkRequestXHR"|"AppBanner"|"Printing"|"WebDatabase"|"PictureInPicture"|"Portal"|"SpeechRecognizer"|"IdleManager"|"PaymentManager"|"SpeechSynthesis"|"KeyboardLock"|"WebOTPService"|"OutstandingNetworkRequestDirectSocket"|"InjectedJavaScript"|"InjectedStyleSheet"|"KeepaliveRequest"|"IndexedDBEvent"|"Dummy"|"JsNetworkRequestReceivedCacheControlNoStoreResource"|"WebRTCSticky"|"WebTransportSticky"|"WebSocketSticky"|"SmartCard"|"LiveMediaStreamTrack"|"UnloadHandler"|"ParserAborted"|"ContentSecurityHandler"|"ContentWebAuthenticationAPI"|"ContentFileChooser"|"ContentSerial"|"ContentFileSystemAccess"|"ContentMediaDevicesDispatcherHost"|"ContentWebBluetooth"|"ContentWebUSB"|"ContentMediaSessionService"|"ContentScreenReader"|"EmbedderPopupBlockerTabHelper"|"EmbedderSafeBrowsingTriggeredPopupBlocker"|"EmbedderSafeBrowsingThreatDetails"|"EmbedderAppBannerManager"|"EmbedderDomDistillerViewerSource"|"EmbedderDomDistillerSelfDeletingRequestDelegate"|"EmbedderOomInterventionTabHelper"|"EmbedderOfflinePage"|"EmbedderChromePasswordManagerClientBindCredentialManager"|"EmbedderPermissionRequestManager"|"EmbedderModalDialog"|"EmbedderExtensions"|"EmbedderExtensionMessaging"|"EmbedderExtensionMessagingForOpenPort"|"EmbedderExtensionSentMessageToCachedFrame"|"RequestedByWebViewClient";
     /**
      * Types of not restored reasons for back-forward cache.
      */
@@ -12403,7 +12403,7 @@ iframes, shadow DOM, external resources, and element-inline styles.
        * Whether or not universal access should be granted to the isolated world. This is a powerful
 option, use with caution.
        */
-      grantUniveralAccess?: boolean;
+      grantUniversalAccess?: boolean;
     }
     export type createIsolatedWorldReturnValue = {
       /**
@@ -12420,7 +12420,7 @@ option, use with caution.
        */
       cookieName: string;
       /**
-       * URL to match cooke domain and path.
+       * URL to match cookie domain and path.
        */
       url: string;
     }
@@ -12517,7 +12517,7 @@ as an ad. Only sent if frame is labelled as an ad and id is available.
       frameTree: FrameTree;
     }
     /**
-     * Returns metrics relating to the layouting of the page, such as viewport bounds/scale.
+     * Returns metrics relating to the layout of the page, such as viewport bounds/scale.
      */
     export type getLayoutMetricsParameters = {
     }
@@ -12835,7 +12835,7 @@ reloading an unintended target in case there's a racing navigation.
        */
       query: string;
       /**
-       * If true, search is case sensitive.
+       * If true, search is case-sensitive.
        */
       caseSensitive?: boolean;
       /**
@@ -15215,7 +15215,7 @@ Parts of the URL other than those constituting origin are ignored.
       browserContextId?: Browser.BrowserContextID;
       /**
        * Whether BeginFrames for this target will be controlled via DevTools (headless chrome only,
-not supported on MacOS yet, false by default).
+not supported on macOS yet, false by default).
        */
       enableBeginFrameControl?: boolean;
       /**
@@ -17061,7 +17061,7 @@ manifestId.
     export type installReturnValue = {
     }
     /**
-     * Uninstals the given manifest_id and closes any opened app windows.
+     * Uninstalls the given manifest_id and closes any opened app windows.
      */
     export type uninstallParameters = {
       manifestId: string;
@@ -17855,7 +17855,7 @@ If execution is currently not paused, this parameter has no effect.
        */
       query: string;
       /**
-       * If true, search is case sensitive.
+       * If true, search is case-sensitive.
        */
       caseSensitive?: boolean;
       /**
@@ -18051,7 +18051,7 @@ or caught exceptions, no exceptions. Initial pause on exceptions state is `none`
     /**
      * Edits JavaScript source live.
 
-In general, functions that are currently on the stack can not be edited with
+In general, functions that are currently on the stack cannot be edited with
 a single exception: If the edited function is the top-most stack frame and
 that is the only activation of that function on the stack. In this case
 the live edit will be successful and a `Debugger.restartFrame` for the
@@ -18739,7 +18739,7 @@ NOTE: If you change anything here, make sure to also update
        */
       value?: any;
       /**
-       * Primitive value which can not be JSON-stringified does not have `value`, but gets this
+       * Primitive value which cannot be JSON-stringified does not have `value`, but gets this
 property.
        */
       unserializableValue?: UnserializableValue;
@@ -18930,7 +18930,7 @@ unserializable primitive value or neither of (for undefined) them should be spec
        */
       value?: any;
       /**
-       * Primitive value which can not be JSON-stringified.
+       * Primitive value which cannot be JSON-stringified.
        */
       unserializableValue?: UnserializableValue;
       /**
@@ -19245,7 +19245,7 @@ execution. Overrides `setPauseOnException` state.
       silent?: boolean;
       /**
        * Whether the result is expected to be a JSON object which should be sent by value.
-Can be overriden by `serializationOptions`.
+Can be overridden by `serializationOptions`.
        */
       returnByValue?: boolean;
       /**

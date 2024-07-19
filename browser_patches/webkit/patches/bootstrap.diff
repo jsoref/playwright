@@ -169,7 +169,7 @@ index 820a08fc660633e09675d0e647bd0c50d2fa905a..5ca5ee5a6897b7ef332d906018b45712
 +        return;
 +
      {
-         // We could be called re-entrantly from a nested run loop, so restore the previous id.
+         // We could be called reentrantly from a nested run loop, so restore the previous id.
          SetForScope scopedRequestId(m_currentRequestId, requestId);
 diff --git a/Source/JavaScriptCore/inspector/InspectorBackendDispatcher.h b/Source/JavaScriptCore/inspector/InspectorBackendDispatcher.h
 index 31957be19b946aa90d316dc978a301f80956dd9c..d1a01e7546996535eb3884524c251c50a998eb33 100644
@@ -904,7 +904,7 @@ index b5e2bb2eb58765ec20392b36bf5ef1ac35857a69..7e6c8b8954ed3d5d4ac77dfe51d0e08c
 +                { "name": "orientation", "type": "string", "optional": true, "description": "Whether the node is oriented horizontally or vertically."},
 +                { "name": "focusable", "type": "boolean", "optional": true, "description": "Whether the node is focusable."},
 +                { "name": "children", "type": "array", "optional": true, "items": { "$ref": "AXNode"}, "description": "Child AXNodes of this node, if any."},
-+                { "name": "found", "type": "boolean", "optional": true, "description": "True if this AXNode corresponds with the ObjectId passed into acessibilitySnapshot."}
++                { "name": "found", "type": "boolean", "optional": true, "description": "True if this AXNode corresponds with the ObjectId passed into accessibilitySnapshot."}
 +            ]
 +        },
 +        {
@@ -1101,7 +1101,7 @@ index b5e2bb2eb58765ec20392b36bf5ef1ac35857a69..7e6c8b8954ed3d5d4ac77dfe51d0e08c
                  { "name": "frameId", "$ref": "Network.FrameId", "description": "Id of the frame that has scheduled a navigation." },
 -                { "name": "delay", "type": "number", "description": "Delay (in seconds) until the navigation is scheduled to begin. The navigation is not guaranteed to start." }
 +                { "name": "delay", "type": "number", "description": "Delay (in seconds) until the navigation is scheduled to begin. The navigation is not guaranteed to start." },
-+                { "name": "targetIsCurrentFrame", "type": "boolean", "description": "Whether the naviation will happen in the same frame." }
++                { "name": "targetIsCurrentFrame", "type": "boolean", "description": "Whether the navigation will happen in the same frame." }
              ]
          },
          {
@@ -1130,7 +1130,7 @@ index b5e2bb2eb58765ec20392b36bf5ef1ac35857a69..7e6c8b8954ed3d5d4ac77dfe51d0e08c
              "description": "Fired when the default value of a user preference changes at the system level.",
 @@ -397,6 +579,42 @@
              "parameters": [
-                 { "name": "preferences", "type": "array", "items": { "$ref": "UserPreference" }, "description": "List of user preferences that can be overriden and their new system (default) values." }
+                 { "name": "preferences", "type": "array", "items": { "$ref": "UserPreference" }, "description": "List of user preferences that can be overridden and their new system (default) values." }
              ]
 +        },
 +        {
@@ -1538,7 +1538,7 @@ index 0000000000000000000000000000000000000000..73a4e53ced3acc41316bb8d4c787306d
 +    "commands": [
 +        {
 +            "name": "startVideo",
-+            "description": "Starts recoring video to speified file.",
++            "description": "Starts recording video to specified file.",
 +            "parameters": [
 +                { "name": "file", "type": "string", "description": "Output file location." },
 +                { "name": "width", "type": "integer" },
@@ -1599,7 +1599,7 @@ index 52920cded24a9c6b0ef6fb4e518664955db4f9fa..bbbabc4e7259088b9404e8cc07eecd6f
                  { "name": "type", "type": "string", "enum": ["page", "service-worker", "worker"] },
 -                { "name": "isProvisional", "type": "boolean", "optional": true, "description": "Whether this is a provisional page target." },
 +                { "name": "isProvisional", "type": "boolean", "optional": true, "description": "True value indicates that this is a provisional page target i.e. Such target may be created when current page starts cross-origin navigation. Eventually each provisional target is either committed and swaps with the current target or gets destroyed, e.g. in case of load request failure." },
-                 { "name": "isPaused", "type": "boolean", "optional": true, "description": "Whether the target is paused on start and has to be explicitely resumed by inspector." }
+                 { "name": "isPaused", "type": "boolean", "optional": true, "description": "Whether the target is paused on start and has to be explicitly resumed by inspector." }
              ]
          }
 @@ -37,6 +37,21 @@
@@ -3580,11 +3580,11 @@ index a5167242b6b1ee9d6ccfcd81ef86a5729882d3a4..d64c560f86db46786ba47fe55654c140
 +Protocol::ErrorStringOr<void> InspectorDOMAgent::setInputFiles(const String& objectId, RefPtr<JSON::Array>&& files, RefPtr<JSON::Array>&& paths) {
 +    InjectedScript injectedScript = m_injectedScriptManager.injectedScriptForObjectId(objectId);
 +    if (injectedScript.hasNoValue())
-+        return makeUnexpected("Can not find element's context for given id"_s);
++        return makeUnexpected("Cannot find element's context for given id"_s);
 +
 +    Node* node = scriptValueAsNode(injectedScript.findObjectById(objectId));
 +    if (!node)
-+        return makeUnexpected("Can not find element for given id"_s);
++        return makeUnexpected("Cannot find element for given id"_s);
 +
 +    if (node->nodeType() != Node::ELEMENT_NODE || node->nodeName() != "INPUT"_s)
 +        return makeUnexpected("Not an input node"_s);
@@ -4061,7 +4061,7 @@ index 5329fd0a2c24031a74d05d7c6c342a5f8398eaae..a64e486220e4fc8e37c34856fce8c3d8
 +static String globalIDForFrame(Frame& frame)
 +{
 +    // TODO(playwright): for OOPIF we have to use id of the web process where the frame is hosted.
-+    // Working at the moment because OOPIF is diabled.
++    // Working at the moment because OOPIF is disabled.
 +    return InspectorPageAgent::makeFrameID(Process::identifier(), frame.frameID());
 +}
 +
@@ -5067,7 +5067,7 @@ index 61b797e08f5e6d90cc2724dd7a3b45c0f45af4f8..919a8b963d93742cc99c2739e472361d
 +void PageRuntimeAgent::didReceiveMainResourceError(LocalFrame& frame)
 +{
 +    if (frame.loader().stateMachine().isDisplayingInitialEmptyDocument()) {
-+        // Ensure execution context is created for the empty docment to make
++        // Ensure execution context is created for the empty document to make
 +        // it usable in case loading failed.
 +        mainWorldGlobalObject(frame);
 +    }
@@ -8063,7 +8063,7 @@ index 5728033e25919cef5b81d08516964aa5445c5d6e..0e588ebd34299d56ace86806bdec6e9c
 +        return;
 +    }
 +
-+    // this is the real real clipboard. Prbaobly need to be doing drag data stuff.
++    // this is the real clipboard. Probably need to be doing drag data stuff.
      if (::OpenClipboard(m_owner)) {
          const auto& customData = data.first();
          customData.forEachPlatformStringOrBuffer([](auto& type, auto& stringOrBuffer) {
@@ -11576,7 +11576,7 @@ index 0000000000000000000000000000000000000000..cfb57a48ce387b79613b757e2eb4de2c
 +
 +void initializeBrowserInspectorPipe(std::unique_ptr<InspectorPlaywrightAgentClient> client)
 +{
-+    // Initialize main loop before creating inspecor agent and pipe queues.
++    // Initialize main loop before creating inspector agent and pipe queues.
 +    WebKit::InitializeWebKit2();
 +
 +    class BrowserInspectorPipe {
@@ -12220,7 +12220,7 @@ index 0000000000000000000000000000000000000000..f9af359a8b81babaf855132ec168feb2
 +
 +
 +#ifndef LIBJPEG_TURBO_VERSION
-+/*! This function makes a covnersion for "odd" pixel sizes which typically is a
++/*! This function makes a conversion for "odd" pixel sizes which typically is a
 + * conversion from a 3-byte to a 4-byte (or more) pixel size or vice versa.
 + * The conversion is done from the source buffer src to the destination buffer
 + * dst. The caller MUST ensure that src and dst have the correct memory size.
@@ -12266,7 +12266,7 @@ index 0000000000000000000000000000000000000000..f9af359a8b81babaf855132ec168feb2
 + * support transparency. Thus, default background color is used to replace
 + * transparent regions. The default background color is black if not specified
 + * explicitly. Thus converting e.g. PDF surfaces without having any specific
-+ * background color set will apear with black background and not white as you
++ * background color set will appear with black background and not white as you
 + * might expect. In such cases it is suggested to manually convert the surface
 + * to RGB24 before calling this function.
 + * @param data Pointer to a memory pointer. This parameter receives a pointer
@@ -12274,7 +12274,7 @@ index 0000000000000000000000000000000000000000..f9af359a8b81babaf855132ec168feb2
 + * function reserves the memory properly and it has to be freed by the caller
 + * with free(3).
 + * @param len Pointer to a variable of type size_t which will receive the final
-+ * lenght of the memory buffer.
++ * length of the memory buffer.
 + * @param quality Compression quality, 0-100.
 + * @return On success the function returns CAIRO_STATUS_SUCCESS. In case of
 + * error CAIRO_STATUS_INVALID_FORMAT is returned.
@@ -13151,7 +13151,7 @@ index 0000000000000000000000000000000000000000..90080e92c8278e73355c1fd4c571ea12
 +{
 +    MonotonicTime now = MonotonicTime::now();
 +    if (m_lastFrameTimestamp) {
-+        // If previous frame encoding failed for some rason leave the timestampt intact.
++        // If previous frame encoding failed for some rason leave the timestamp intact.
 +        if (!m_lastFrame)
 +            return;
 +
@@ -13166,7 +13166,7 @@ index 0000000000000000000000000000000000000000..90080e92c8278e73355c1fd4c571ea12
 +void ScreencastEncoder::encodeFrame(cairo_surface_t* drawingAreaSurface, IntSize size)
 +{
 +    flushLastFrame();
-+    // Note that in WPE drawing area size is updated asynchronously and may differ from acutal
++    // Note that in WPE drawing area size is updated asynchronously and may differ from actual
 +    // size of the surface.
 +    if (size.isZero()) {
 +        return;
@@ -13624,7 +13624,7 @@ index 6d229b943fe69cd258b32b1e38c5716715a4cd4b..7294731b4ff75a0cec1dd010cc7facaf
 +    m_agents.append(WTFMove(inputAgent));
 +    m_agents.append(makeUnique<InspectorDialogAgent>(m_backendDispatcher.get(), m_frontendRouter.get(), m_inspectedPage));
 +    auto screencastAgent = makeUnique<InspectorScreencastAgent>(m_backendDispatcher.get(), m_frontendRouter.get(), m_inspectedPage);
-+    m_screecastAgent = screencastAgent.get();
++    m_screencastAgent = screencastAgent.get();
 +    m_agents.append(WTFMove(screencastAgent));
 +    if (s_observer)
 +        s_observer->didCreateInspectorController(m_inspectedPage);
@@ -13753,7 +13753,7 @@ index 6d229b943fe69cd258b32b1e38c5716715a4cd4b..7294731b4ff75a0cec1dd010cc7facaf
 +    if (!m_frontendRouter->hasFrontends())
 +        return;
 +
-+    m_screecastAgent->didPaint(surface);
++    m_screencastAgent->didPaint(surface);
 +}
 +#endif
 +
@@ -14013,7 +14013,7 @@ index c6aafe0e9339c8ac02dc133754ddc23e1cb522ff..91473e6a0b4a37a15959f966fc75134c
      Inspector::InspectorTargetAgent* m_targetAgent { nullptr };
 +    WebPageInspectorEmulationAgent* m_emulationAgent { nullptr };
 +    WebPageInspectorInputAgent* m_inputAgent { nullptr };
-+    InspectorScreencastAgent* m_screecastAgent { nullptr };
++    InspectorScreencastAgent* m_screencastAgent { nullptr };
      HashMap<String, std::unique_ptr<InspectorTargetProxy>> m_targets;
  
      InspectorBrowserAgent* m_enabledBrowserAgent { nullptr };
@@ -14390,10 +14390,10 @@ index 0000000000000000000000000000000000000000..a494ee1006f70d398149753f8953515d
 +    WebPageProxy& m_page;
 +};
 +
-+class OverridenGeolocationProvider final : public API::GeolocationProvider, public CanMakeWeakPtr<OverridenGeolocationProvider> {
-+     WTF_MAKE_NONCOPYABLE(OverridenGeolocationProvider);
++class OverriddenGeolocationProvider final : public API::GeolocationProvider, public CanMakeWeakPtr<OverriddenGeolocationProvider> {
++     WTF_MAKE_NONCOPYABLE(OverriddenGeolocationProvider);
 +public:
-+    OverridenGeolocationProvider()
++    OverriddenGeolocationProvider()
 +        : m_position(WebGeolocationPosition::create(WebCore::GeolocationPositionData()))
 +    {
 +    }
@@ -14422,7 +14422,7 @@ index 0000000000000000000000000000000000000000..a494ee1006f70d398149753f8953515d
 +namespace {
 +
 +void setGeolocationProvider(BrowserContext* browserContext) {
-+    auto provider = makeUnique<OverridenGeolocationProvider>();
++    auto provider = makeUnique<OverriddenGeolocationProvider>();
 +    browserContext->geolocationProvider = *provider;
 +    auto* geoManager = browserContext->processPool->supplement<WebGeolocationManagerProxy>();
 +    geoManager->setProvider(WTFMove(provider));
@@ -14989,7 +14989,7 @@ index 0000000000000000000000000000000000000000..a494ee1006f70d398149753f8953515d
 +    for (const auto& value : paths.get()) {
 +        String path;
 +        if (!value->asString(path))
-+            return makeUnexpected("Filr path must be a string"_s);
++            return makeUnexpected("File path must be a string"_s);
 +
 +        files.append(path);
 +    }
@@ -15463,7 +15463,7 @@ index 0000000000000000000000000000000000000000..e7a3dcc533294bb6e12f65d79b5b716b
 +
 +namespace WebKit {
 +
-+class OverridenGeolocationProvider;
++class OverriddenGeolocationProvider;
 +class WebsiteDataStore;
 +class WebPageProxy;
 +class WebProcessPool;
@@ -15478,7 +15478,7 @@ index 0000000000000000000000000000000000000000..e7a3dcc533294bb6e12f65d79b5b716b
 +    RefPtr<WebsiteDataStore> dataStore;
 +    RefPtr<WebProcessPool> processPool;
 +    HashSet<WebPageProxy*> pages;
-+    WeakPtr<OverridenGeolocationProvider> geolocationProvider;
++    WeakPtr<OverriddenGeolocationProvider> geolocationProvider;
 +};
 +
 +class InspectorPlaywrightAgentClient {
@@ -15545,7 +15545,7 @@ index 46f725b53f67ed41ff3312d106a23174d6a16363..369ee3539762a6286977d94a7958b252
  #endif
  
 -#if PLATFORM(COCOA) || PLATFORM(GTK)
-+// Paywright begin
++// Playwright begin
 +#if PLATFORM(COCOA)
 +    virtual RetainPtr<CGImageRef> takeSnapshotForAutomation() = 0;
 +#elif PLATFORM(WPE)
@@ -15553,7 +15553,7 @@ index 46f725b53f67ed41ff3312d106a23174d6a16363..369ee3539762a6286977d94a7958b252
 +#elif PLATFORM(GTK)
 +    virtual RefPtr<ViewSnapshot> takeViewSnapshot(std::optional<WebCore::IntRect>&&, bool nominalResolution = false) = 0;
 +#endif
-+// Paywright end
++// Playwright end
 +#if PLATFORM(COCOA)
      virtual RefPtr<ViewSnapshot> takeViewSnapshot(std::optional<WebCore::IntRect>&&) = 0;
  #endif
@@ -18745,9 +18745,9 @@ index 1647891b55a718f66ee2f4a084439edd655c623a..2099b9166e2cac062d4161d704050a07
      void updateAcceleratedCompositingMode(const LayerTreeContext&) override;
      void didFirstLayerFlush(const LayerTreeContext&) override;
  
-+// Paywright begin
++// Playwright begin
 +    RetainPtr<CGImageRef> takeSnapshotForAutomation() override;
-+// Paywright end
++// Playwright end
      RefPtr<ViewSnapshot> takeViewSnapshot(std::optional<WebCore::IntRect>&&) override;
      void wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent&) override;
  #if ENABLE(MAC_GESTURE_EVENTS)
@@ -18850,11 +18850,11 @@ index 3fe2a9487a96b31f476bb17e45374f880e80da9a..b72433e5981f298d4d1ca93274df51cd
      return m_impl->footerBannerLayer();
  }
  
-+// Paywright begin
++// Playwright begin
 +RetainPtr<CGImageRef> PageClientImpl::takeSnapshotForAutomation() {
 +    return m_impl->takeSnapshotForAutomation();
 +}
-+// Paywright begin
++// Playwright begin
 +
  RefPtr<ViewSnapshot> PageClientImpl::takeViewSnapshot(std::optional<WebCore::IntRect>&&)
  {
@@ -19124,9 +19124,9 @@ index 363c8b384c7e2e2379f06903c77c7d139e1a454f..b0ca037bc8741ec245d9afefa2be734e
      void provideDataForPasteboard(NSPasteboard *, NSString *type);
      NSArray *namesOfPromisedFilesDroppedAtDestination(NSURL *dropDestination);
  
-+// Paywright begin
++// Playwright begin
 +    RetainPtr<CGImageRef> takeSnapshotForAutomation();
-+// Paywright end
++// Playwright end
      RefPtr<ViewSnapshot> takeViewSnapshot();
      void saveBackForwardSnapshotForCurrentItem();
      void saveBackForwardSnapshotForItem(WebBackForwardListItem&);
@@ -19150,7 +19150,7 @@ index b12b690eff989c9f4235c874360e26543c3e95ee..e8be29392d3c1765fc977f8a0036a24e
  ALLOW_DEPRECATED_DECLARATIONS_END
  }
  
-+// Paywright begin
++// Playwright begin
 +RetainPtr<CGImageRef> WebViewImpl::takeSnapshotForAutomation() {
 +    NSWindow *window = [m_view window];
 +
@@ -19160,7 +19160,7 @@ index b12b690eff989c9f4235c874360e26543c3e95ee..e8be29392d3c1765fc977f8a0036a24e
 +
 +    return takeWindowSnapshot(windowID, true);
 +}
-+// Paywright end
++// Playwright end
 +
  RefPtr<ViewSnapshot> WebViewImpl::takeViewSnapshot()
  {
@@ -21591,7 +21591,7 @@ index 2ed9985c35980ba0fca09c2fc9ea5ab300b19b00..a5f773d071cb67025b16614a998bd093
 +
 +find_library(LIBVPX_CUSTOM_LIBRARY vpx.lib
 +    HINTS ${LIBVPX_PACKAGE_PATH}/lib
-+    REQIRED
++    REQUIRED
 +    NO_DEFAULT_PATH
 +)
 +message(STATUS "Found LIBVPX_CUSTOM_LIBRARY = ${LIBVPX_CUSTOM_LIBRARY}")
@@ -21612,7 +21612,7 @@ index 2ed9985c35980ba0fca09c2fc9ea5ab300b19b00..a5f773d071cb67025b16614a998bd093
  SET_AND_EXPOSE_TO_BUILD(ENABLE_WEBDRIVER_KEYBOARD_INTERACTIONS ON)
  SET_AND_EXPOSE_TO_BUILD(ENABLE_WEBDRIVER_MOUSE_INTERACTIONS ON)
  
-+# Plawright begin
++# Playwright begin
 +WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_DARK_MODE_CSS PRIVATE ON)
 +WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_DEVICE_ORIENTATION PRIVATE ON)
 +WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_NOTIFICATIONS PRIVATE ON)
@@ -21772,13 +21772,13 @@ index bd00606c26b6fedb75978ed26a9b07f4b70828d8..8460a4ae5ff7461e3435fe2e704bb04e
      widgetClass->delete_event = browserWindowDeleteEvent;
  #endif
 +
-+// Playwrigth begin
++// Playwright begin
 +    // Override preferred (which is minimum :-) size to 0 so that we can
 +    // emulate arbitrary resolution.
 +    GtkWidgetClass* browserWidgetClass = GTK_WIDGET_CLASS(klass);
 +    browserWidgetClass->get_preferred_width = zeroPreferredSize;
 +    browserWidgetClass->get_preferred_height = zeroPreferredSize;
-+// Playwrigth end
++// Playwright end
  }
  
  /* Public API. */
@@ -21857,17 +21857,17 @@ index 451e0333dd4e8f5d6313fa80c5027ef2661a61ac..7398af4772ed9a479b1632e38af2d4ee
 +    return newWebView;
 +}
 +
-+static void quitBroserApplication(WebKitBrowserInspector* browser_inspector)
++static void quitBrowserApplication(WebKitBrowserInspector* browser_inspector)
 +{
 +    g_application_release(G_APPLICATION(browserApplication));
 +}
 +
 +static void keepApplicationAliveUntilQuit(GApplication *application)
 +{
-+    // Reference the application, it will be released in quitBroserApplication.
++    // Reference the application, it will be released in quitBrowserApplication.
 +    g_application_hold(application);
 +    WebKitBrowserInspector* browserInspector = webkit_browser_inspector_get_default();
-+    g_signal_connect(browserInspector, "quit-application", G_CALLBACK(quitBroserApplication), NULL);
++    g_signal_connect(browserInspector, "quit-application", G_CALLBACK(quitBrowserApplication), NULL);
 +}
 +
 +static void configureBrowserInspectorPipe()
@@ -22117,7 +22117,7 @@ index 3c2476471ef67299da6312d0f995fc0738aa96c9..b13ab78bfe62c8c2cdd052e24255a780
 +    return webView;
 +}
 +
-+static void quitBroserApplication(WebKitBrowserInspector* browser_inspector, gpointer data)
++static void quitBrowserApplication(WebKitBrowserInspector* browser_inspector, gpointer data)
 +{
 +    GApplication* application = static_cast<GApplication*>(data);
 +    g_application_quit(application);
@@ -22127,7 +22127,7 @@ index 3c2476471ef67299da6312d0f995fc0738aa96c9..b13ab78bfe62c8c2cdd052e24255a780
 +{
 +    WebKitBrowserInspector* browserInspector = webkit_browser_inspector_get_default();
 +    g_signal_connect(browserInspector, "create-new-page", G_CALLBACK(createNewPage), NULL);
-+    g_signal_connect(browserInspector, "quit-application", G_CALLBACK(quitBroserApplication), application);
++    g_signal_connect(browserInspector, "quit-application", G_CALLBACK(quitBrowserApplication), application);
 +    webkit_browser_inspector_initialize_pipe(proxy, ignoreHosts);
 +}
 +

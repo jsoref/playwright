@@ -8,7 +8,7 @@ fi
 
 ANDROID_ARCH="x86_64"
 
-# on MacOS M1 we need to use arm64 (can't emulate x86_64)
+# on macOS M1 we need to use arm64 (can't emulate x86_64)
 if [[ "$(uname -m)" == "arm64" ]]; then
     ANDROID_ARCH="arm64-v8a"
 fi

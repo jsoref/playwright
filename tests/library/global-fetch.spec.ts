@@ -105,7 +105,7 @@ it('should work with correct credentials and matching origin', async ({ playwrig
   expect(response.status()).toBe(200);
 });
 
-it('should work with correct credentials and matching origin case insensitive', async ({ playwright, server }) => {
+it('should work with correct credentials and matching origin case-insensitive', async ({ playwright, server }) => {
   server.setAuth('/empty.html', 'user', 'pass');
   const request = await playwright.request.newContext({ httpCredentials: { username: 'user', password: 'pass', origin: server.PREFIX.toUpperCase() } });
   const response = await request.get(server.EMPTY_PAGE);

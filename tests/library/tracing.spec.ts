@@ -248,7 +248,7 @@ test('should not include trace resources from the previous chunks', async ({ con
   await page.setContent(`
     <style>
       @keyframes move {
-        from { marign-left: 0; }
+        from { margin-left: 0; }
         to   { margin-left: 1000px; }
       }
       button {

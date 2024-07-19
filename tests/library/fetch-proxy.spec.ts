@@ -38,8 +38,8 @@ it('context request should pick up proxy credentials', async ({ browserType, ser
     proxy: { server: `localhost:${proxyServer.PORT}`, username: 'user', password: 'secret' }
   });
   const context = await browser.newContext();
-  const response = await context.request.get('http://non-existent.com/simple.json');
-  expect(proxyServer.connectHosts).toContain('non-existent.com:80');
+  const response = await context.request.get('http://nonexistent.com/simple.json');
+  expect(proxyServer.connectHosts).toContain('nonexistent.com:80');
   expect(auth).toBe('Basic ' + Buffer.from('user:secret').toString('base64'));
   expect(await response.json()).toEqual({ foo: 'bar' });
   await browser.close();
@@ -55,8 +55,8 @@ it('global request should pick up proxy credentials', async ({ playwright, serve
   const request = await playwright.request.newContext({
     proxy: { server: `localhost:${proxyServer.PORT}`, username: 'user', password: 'secret' }
   });
-  const response = await request.get('http://non-existent.com/simple.json');
-  expect(proxyServer.connectHosts).toContain('non-existent.com:80');
+  const response = await request.get('http://nonexistent.com/simple.json');
+  expect(proxyServer.connectHosts).toContain('nonexistent.com:80');
   expect(auth).toBe('Basic ' + Buffer.from('user:secret').toString('base64'));
   expect(await response.json()).toEqual({ foo: 'bar' });
   await request.dispose();
@@ -74,7 +74,7 @@ it('should work with context level proxy', async ({ contextFactory, contextOptio
 
   const [request, response] = await Promise.all([
     server.waitForRequest('/target.html'),
-    context.request.get(`http://non-existent.com/target.html`)
+    context.request.get(`http://nonexistent.com/target.html`)
   ]);
   expect(response.status()).toBe(200);
   expect(request.url).toBe('/target.html');

@@ -18,7 +18,7 @@ openssl req \
 
 ```
 mkdir -p client/trusted
-# generate server-signed (valid) certifcate
+# generate server-signed (valid) certificate
 openssl req \
 	-newkey rsa:4096 \
 	-keyout client/trusted/key.pem \

@@ -609,7 +609,7 @@ for (const useIntermediateMergeReport of [false] as const) {
       await showReport();
       await page.getByRole('link', { name: 'View trace' }).click();
 
-      // Trace viewer should not hang here when displaying parallal requests.
+      // Trace viewer should not hang here when displaying parallel requests.
       await expect(page.getByTestId('actions-tree')).toContainText('apiRequestContext.get');
       await page.getByText('apiRequestContext.get').nth(2).click();
       await page.getByText('apiRequestContext.get').nth(1).click();

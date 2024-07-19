@@ -877,7 +877,7 @@ export module Protocol {
        */
       sourceURL?: string;
       /**
-       * @-rule's header text range in the enclosing stylesheet (if available). This is from the first non-whitespace character after the @ declarartion to the last non-whitespace character before an opening curly bracket or semicolon.
+       * @-rule's header text range in the enclosing stylesheet (if available). This is from the first non-whitespace character after the @ declaration to the last non-whitespace character before an opening curly bracket or semicolon.
        */
       range?: SourceRange;
     }
@@ -907,7 +907,7 @@ export module Protocol {
      */
     export interface FontVariationAxis {
       /**
-       * The name, generally human-readable, of the variation axis. Some axes may not provide a human-readable name distiguishable from the tag. This field is ommited when there is no name, or the name matches the tag exactly.
+       * The name, generally human-readable, of the variation axis. Some axes may not provide a human-readable name distiguishable from the tag. This field is omitted when there is no name, or the name matches the tag exactly.
        */
       name?: string;
       /**
@@ -1209,7 +1209,7 @@ export module Protocol {
     export type forcePseudoStateReturnValue = {
     }
     /**
-     * Change how layout context type changes are handled for nodes. When the new mode would observe nodes the frontend has not yet recieved, those nodes will be sent to the frontend immediately.
+     * Change how layout context type changes are handled for nodes. When the new mode would observe nodes the frontend has not yet received, those nodes will be sent to the frontend immediately.
      */
     export type setLayoutContextTypeChangedModeParameters = {
       /**
@@ -1920,7 +1920,7 @@ export module Protocol {
        */
       binding: string;
       /**
-       * A more descriptive name for the type of binding that represents this paritcular data relationship
+       * A more descriptive name for the type of binding that represents this particular data relationship
        */
       type?: string;
       /**
@@ -2905,7 +2905,7 @@ export module Protocol {
        */
       nodeIds?: NodeId[];
       /**
-       * If true, search is case sensitive.
+       * If true, search is case-sensitive.
        */
       caseSensitive?: boolean;
     }
@@ -2920,7 +2920,7 @@ export module Protocol {
       resultCount: number;
     }
     /**
-     * Returns search results from given <code>fromIndex</code> to given <code>toIndex</code> from the sarch with the given identifier.
+     * Returns search results from given <code>fromIndex</code> to given <code>toIndex</code> from the search with the given identifier.
      */
     export type getSearchResultsParameters = {
       /**
@@ -3493,7 +3493,7 @@ might return multiple quads for inline nodes.
        */
       eventName?: string;
       /**
-       * If true, eventName is case sensitive. Defaults to true.
+       * If true, eventName is case-sensitive. Defaults to true.
        */
       caseSensitive?: boolean;
       /**
@@ -3517,7 +3517,7 @@ might return multiple quads for inline nodes.
        */
       eventName?: string;
       /**
-       * If true, eventName is case sensitive. Defaults to true.
+       * If true, eventName is case-sensitive. Defaults to true.
        */
       caseSensitive?: boolean;
       /**
@@ -4168,7 +4168,7 @@ might return multiple quads for inline nodes.
        */
       symbol: string;
       /**
-       * If true, symbol is case sensitive. Defaults to true.
+       * If true, symbol is case-sensitive. Defaults to true.
        */
       caseSensitive?: boolean;
       /**
@@ -4191,7 +4191,7 @@ might return multiple quads for inline nodes.
        */
       symbol: string;
       /**
-       * If true, symbol is case sensitive. Defaults to true.
+       * If true, symbol is case-sensitive. Defaults to true.
        */
       caseSensitive?: boolean;
       /**
@@ -4274,7 +4274,7 @@ might return multiple quads for inline nodes.
        */
       query: string;
       /**
-       * If true, search is case sensitive.
+       * If true, search is case-sensitive.
        */
       caseSensitive?: boolean;
       /**
@@ -4458,7 +4458,7 @@ might return multiple quads for inline nodes.
       url: string;
       shouldBlackbox: boolean;
       /**
-       * If true, <code>url</code> is case sensitive.
+       * If true, <code>url</code> is case-sensitive.
        */
       caseSensitive?: boolean;
       /**
@@ -6508,7 +6508,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
      */
     export type Setting = "PrivateClickMeasurementDebugModeEnabled"|"AuthorAndUserStylesEnabled"|"ICECandidateFilteringEnabled"|"ITPDebugModeEnabled"|"ImagesEnabled"|"MediaCaptureRequiresSecureConnection"|"MockCaptureDevicesEnabled"|"NeedsSiteSpecificQuirks"|"ScriptEnabled"|"ShowDebugBorders"|"ShowRepaintCounter"|"WebSecurityEnabled"|"DeviceOrientationEventEnabled"|"SpeechRecognitionEnabled"|"PointerLockEnabled"|"NotificationsEnabled"|"FullScreenEnabled"|"InputTypeMonthEnabled"|"InputTypeWeekEnabled";
     /**
-     * A user preference that can be overriden by Web Inspector, like an accessibility preference.
+     * A user preference that can be overridden by Web Inspector, like an accessibility preference.
      */
     export interface UserPreference {
       /**
@@ -6795,7 +6795,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
        */
       children?: AXNode[];
       /**
-       * True if this AXNode corresponds with the ObjectId passed into acessibilitySnapshot.
+       * True if this AXNode corresponds with the ObjectId passed into accessibilitySnapshot.
        */
       found?: boolean;
     }
@@ -6882,7 +6882,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
        */
       delay: number;
       /**
-       * Whether the naviation will happen in the same frame.
+       * Whether the navigation will happen in the same frame.
        */
       targetIsCurrentFrame: boolean;
     }
@@ -6913,7 +6913,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
      */
     export type defaultUserPreferencesDidChangePayload = {
       /**
-       * List of user preferences that can be overriden and their new system (default) values.
+       * List of user preferences that can be overridden and their new system (default) values.
        */
       preferences: UserPreference[];
     }
@@ -7146,7 +7146,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
        */
       query: string;
       /**
-       * If true, search is case sensitive.
+       * If true, search is case-sensitive.
        */
       caseSensitive?: boolean;
       /**
@@ -7173,7 +7173,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
        */
       text: string;
       /**
-       * If true, search is case sensitive.
+       * If true, search is case-sensitive.
        */
       caseSensitive?: boolean;
       /**
@@ -8210,7 +8210,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
        */
       constructorName?: string;
       /**
-       * Pointer to the StructureRepresentation of the protoype if one exists.
+       * Pointer to the StructureRepresentation of the prototype if one exists.
        */
       prototypeStructure?: StructureDescription;
       /**
@@ -8265,7 +8265,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
      */
     export interface TypeDescription {
       /**
-       * If true, we were able to correlate the offset successfuly with a program location. If false, the offset may be bogus or the offset may be from a CodeBlock that hasn't executed.
+       * If true, we were able to correlate the offset successfully with a program location. If false, the offset may be bogus or the offset may be from a CodeBlock that hasn't executed.
        */
       isValid: boolean;
       /**
@@ -8647,7 +8647,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
       savedResultIndex?: number;
     }
     /**
-     * Creates an additional reference to all saved values in the Console using the the given string as a prefix instead of $.
+     * Creates an additional reference to all saved values in the Console using the given string as a prefix instead of $.
      */
     export type setSavedResultAliasParameters = {
       /**
@@ -8763,7 +8763,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
     }
     
     /**
-     * Starts recoring video to speified file.
+     * Starts recording video to specified file.
      */
     export type startVideoParameters = {
       /**
@@ -8997,7 +8997,7 @@ the top of the viewport and Y increases as it proceeds towards the bottom of the
        */
       isProvisional?: boolean;
       /**
-       * Whether the target is paused on start and has to be explicitely resumed by inspector.
+       * Whether the target is paused on start and has to be explicitly resumed by inspector.
        */
       isPaused?: boolean;
     }

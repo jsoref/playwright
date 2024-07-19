@@ -37,7 +37,7 @@ it('should use proxy @smoke', async ({ browserType, server, mode }) => {
     proxy: { server: `localhost:${server.PORT}` }
   });
   const page = await browser.newPage();
-  await page.goto('http://non-existent.com/target.html');
+  await page.goto('http://nonexistent.com/target.html');
   expect(await page.title()).toBe('Served by the proxy');
   await browser.close();
 });
@@ -51,11 +51,11 @@ it('should use proxy for second page', async ({ browserType, server }) => {
   });
 
   const page = await browser.newPage();
-  await page.goto('http://non-existent.com/target.html');
+  await page.goto('http://nonexistent.com/target.html');
   expect(await page.title()).toBe('Served by the proxy');
 
   const page2 = await browser.newPage();
-  await page2.goto('http://non-existent.com/target.html');
+  await page2.goto('http://nonexistent.com/target.html');
   expect(await page2.title()).toBe('Served by the proxy');
 
   await browser.close();
@@ -69,7 +69,7 @@ it('should work with IP:PORT notion', async ({ browserType, server }) => {
     proxy: { server: `127.0.0.1:${server.PORT}` }
   });
   const page = await browser.newPage();
-  await page.goto('http://non-existent.com/target.html');
+  await page.goto('http://nonexistent.com/target.html');
   expect(await page.title()).toBe('Served by the proxy');
   await browser.close();
 });
@@ -139,7 +139,7 @@ it('should authenticate', async ({ browserType, server }) => {
     proxy: { server: `localhost:${server.PORT}`, username: 'user', password: 'secret' }
   });
   const page = await browser.newPage();
-  await page.goto('http://non-existent.com/target.html');
+  await page.goto('http://nonexistent.com/target.html');
   expect(await page.title()).toBe('Basic ' + Buffer.from('user:secret').toString('base64'));
   await browser.close();
 });
@@ -172,7 +172,7 @@ it('should work with authenticate followed by redirect', async ({ browserName, b
     proxy: { server: `localhost:${server.PORT}`, username: 'user', password: 'secret' }
   });
   const page = await browser.newPage();
-  await page.goto('http://non-existent.com/page1.html');
+  await page.goto('http://nonexistent.com/page1.html');
   expect(await page.title()).toBe('Served by the proxy');
   await browser.close();
 });
@@ -232,7 +232,7 @@ it('should use socks proxy', async ({ browserType, socksPort }) => {
     proxy: { server: `socks5://localhost:${socksPort}` }
   });
   const page = await browser.newPage();
-  await page.goto('http://non-existent.com');
+  await page.goto('http://nonexistent.com');
   expect(await page.title()).toBe('Served by the SOCKS proxy');
   await browser.close();
 });
@@ -243,11 +243,11 @@ it('should use socks proxy in second page', async ({ browserType, socksPort }) =
   });
 
   const page = await browser.newPage();
-  await page.goto('http://non-existent.com');
+  await page.goto('http://nonexistent.com');
   expect(await page.title()).toBe('Served by the SOCKS proxy');
 
   const page2 = await browser.newPage();
-  await page2.goto('http://non-existent.com');
+  await page2.goto('http://nonexistent.com');
   expect(await page2.title()).toBe('Served by the SOCKS proxy');
 
   await browser.close();

@@ -230,7 +230,7 @@ export class Recorder implements InstrumentationListener {
   }
 
   _pausedStateChanged() {
-    // If we are called upon page.pause, we don't have metadatas, populate them.
+    // If we are called upon page.pause, we don't have metadata, populate them.
     for (const { metadata, sdkObject } of this._debugger.pausedDetails()) {
       if (!this._currentCallsMetadata.has(metadata))
         this.onBeforeCall(sdkObject, metadata);
@@ -344,11 +344,11 @@ export class Recorder implements InstrumentationListener {
     this.updateCallLog([metadata]);
   }
 
-  updateCallLog(metadatas: CallMetadata[]) {
+  updateCallLog(callMetadata: CallMetadata[]) {
     if (this._mode === 'recording' || this._mode === 'assertingText' || this._mode === 'assertingVisibility' || this._mode === 'assertingValue')
       return;
     const logs: CallLog[] = [];
-    for (const metadata of metadatas) {
+    for (const metadata of callMetadata) {
       if (!metadata.method || metadata.internal)
         continue;
       let status: CallLogStatus = 'done';

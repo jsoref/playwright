@@ -214,7 +214,7 @@ it.describe('download event', () => {
     await page.close();
   });
 
-  it('should create subdirectories when saving to non-existent user-specified path', async ({ browser, server }, testInfo) => {
+  it('should create subdirectories when saving to nonexistent user-specified path', async ({ browser, server }, testInfo) => {
     const page = await browser.newPage();
     await page.setContent(`<a href="${server.PREFIX}/download">download</a>`);
     const [download] = await Promise.all([

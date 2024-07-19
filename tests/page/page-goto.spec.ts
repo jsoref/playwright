@@ -743,7 +743,7 @@ it('should properly wait for load', async ({ page, server, browserName }) => {
   await page.goto(server.PREFIX + '/load-event/load-event.html');
   const results = await page.evaluate('window.results');
   expect(results).toEqual([
-    'script tag after after module',
+    'script tag after module',
     'slow module',
     'module',
     'DOMContentLoaded',
