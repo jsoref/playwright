@@ -1130,7 +1130,7 @@ index b5e2bb2eb58765ec20392b36bf5ef1ac35857a69..7e6c8b8954ed3d5d4ac77dfe51d0e08c
              "description": "Fired when the default value of a user preference changes at the system level.",
 @@ -397,6 +579,42 @@
              "parameters": [
-                 { "name": "preferences", "type": "array", "items": { "$ref": "UserPreference" }, "description": "List of user preferences that can be overriden and their new system (default) values." }
+                 { "name": "preferences", "type": "array", "items": { "$ref": "UserPreference" }, "description": "List of user preferences that can be overridden and their new system (default) values." }
              ]
 +        },
 +        {
@@ -14390,10 +14390,10 @@ index 0000000000000000000000000000000000000000..a494ee1006f70d398149753f8953515d
 +    WebPageProxy& m_page;
 +};
 +
-+class OverridenGeolocationProvider final : public API::GeolocationProvider, public CanMakeWeakPtr<OverridenGeolocationProvider> {
-+     WTF_MAKE_NONCOPYABLE(OverridenGeolocationProvider);
++class OverriddenGeolocationProvider final : public API::GeolocationProvider, public CanMakeWeakPtr<OverriddenGeolocationProvider> {
++     WTF_MAKE_NONCOPYABLE(OverriddenGeolocationProvider);
 +public:
-+    OverridenGeolocationProvider()
++    OverriddenGeolocationProvider()
 +        : m_position(WebGeolocationPosition::create(WebCore::GeolocationPositionData()))
 +    {
 +    }
@@ -14422,7 +14422,7 @@ index 0000000000000000000000000000000000000000..a494ee1006f70d398149753f8953515d
 +namespace {
 +
 +void setGeolocationProvider(BrowserContext* browserContext) {
-+    auto provider = makeUnique<OverridenGeolocationProvider>();
++    auto provider = makeUnique<OverriddenGeolocationProvider>();
 +    browserContext->geolocationProvider = *provider;
 +    auto* geoManager = browserContext->processPool->supplement<WebGeolocationManagerProxy>();
 +    geoManager->setProvider(WTFMove(provider));
@@ -15463,7 +15463,7 @@ index 0000000000000000000000000000000000000000..e7a3dcc533294bb6e12f65d79b5b716b
 +
 +namespace WebKit {
 +
-+class OverridenGeolocationProvider;
++class OverriddenGeolocationProvider;
 +class WebsiteDataStore;
 +class WebPageProxy;
 +class WebProcessPool;
@@ -15478,7 +15478,7 @@ index 0000000000000000000000000000000000000000..e7a3dcc533294bb6e12f65d79b5b716b
 +    RefPtr<WebsiteDataStore> dataStore;
 +    RefPtr<WebProcessPool> processPool;
 +    HashSet<WebPageProxy*> pages;
-+    WeakPtr<OverridenGeolocationProvider> geolocationProvider;
++    WeakPtr<OverriddenGeolocationProvider> geolocationProvider;
 +};
 +
 +class InspectorPlaywrightAgentClient {
