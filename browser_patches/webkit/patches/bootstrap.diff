@@ -13624,7 +13624,7 @@ index 6d229b943fe69cd258b32b1e38c5716715a4cd4b..7294731b4ff75a0cec1dd010cc7facaf
 +    m_agents.append(WTFMove(inputAgent));
 +    m_agents.append(makeUnique<InspectorDialogAgent>(m_backendDispatcher.get(), m_frontendRouter.get(), m_inspectedPage));
 +    auto screencastAgent = makeUnique<InspectorScreencastAgent>(m_backendDispatcher.get(), m_frontendRouter.get(), m_inspectedPage);
-+    m_screecastAgent = screencastAgent.get();
++    m_screencastAgent = screencastAgent.get();
 +    m_agents.append(WTFMove(screencastAgent));
 +    if (s_observer)
 +        s_observer->didCreateInspectorController(m_inspectedPage);
@@ -13753,7 +13753,7 @@ index 6d229b943fe69cd258b32b1e38c5716715a4cd4b..7294731b4ff75a0cec1dd010cc7facaf
 +    if (!m_frontendRouter->hasFrontends())
 +        return;
 +
-+    m_screecastAgent->didPaint(surface);
++    m_screencastAgent->didPaint(surface);
 +}
 +#endif
 +
@@ -14013,7 +14013,7 @@ index c6aafe0e9339c8ac02dc133754ddc23e1cb522ff..91473e6a0b4a37a15959f966fc75134c
      Inspector::InspectorTargetAgent* m_targetAgent { nullptr };
 +    WebPageInspectorEmulationAgent* m_emulationAgent { nullptr };
 +    WebPageInspectorInputAgent* m_inputAgent { nullptr };
-+    InspectorScreencastAgent* m_screecastAgent { nullptr };
++    InspectorScreencastAgent* m_screencastAgent { nullptr };
      HashMap<String, std::unique_ptr<InspectorTargetProxy>> m_targets;
  
      InspectorBrowserAgent* m_enabledBrowserAgent { nullptr };
