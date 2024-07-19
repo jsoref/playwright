@@ -14989,7 +14989,7 @@ index 0000000000000000000000000000000000000000..a494ee1006f70d398149753f8953515d
 +    for (const auto& value : paths.get()) {
 +        String path;
 +        if (!value->asString(path))
-+            return makeUnexpected("Filr path must be a string"_s);
++            return makeUnexpected("File path must be a string"_s);
 +
 +        files.append(path);
 +    }
