@@ -78,7 +78,7 @@ it('should work with status code 422', async ({ page, server }) => {
   expect(await page.evaluate(() => document.body.textContent)).toBe('Yo, page!');
 });
 
-it('should fulfill with unuassigned status codes', async ({ page, server, browserName }) => {
+it('should fulfill with unassigned status codes', async ({ page, server, browserName }) => {
   it.info().annotations.push({ type: 'issue', description: 'https://github.com/microsoft/playwright/issues/28490' });
   it.info().annotations.push({ type: 'issue', description: 'https://github.com/microsoft/playwright/issues/30773' });
   let fulfillPromiseCallback;
