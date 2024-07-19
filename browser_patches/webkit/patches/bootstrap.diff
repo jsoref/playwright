@@ -1538,7 +1538,7 @@ index 0000000000000000000000000000000000000000..73a4e53ced3acc41316bb8d4c787306d
 +    "commands": [
 +        {
 +            "name": "startVideo",
-+            "description": "Starts recoring video to speified file.",
++            "description": "Starts recording video to speified file.",
 +            "parameters": [
 +                { "name": "file", "type": "string", "description": "Output file location." },
 +                { "name": "width", "type": "integer" },
