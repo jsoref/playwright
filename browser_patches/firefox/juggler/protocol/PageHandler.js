@@ -378,7 +378,7 @@ class PageHandler {
     let sameDocumentNavigation = false;
     try {
       const uri = NetUtil.newURI(url);
-      // This is the same check that verifes browser-side if this is the same-document navigation.
+      // This is the same check that verifies browser-side if this is the same-document navigation.
       // See CanonicalBrowsingContext::SupportsLoadingInParent.
       sameDocumentNavigation = browsingContext.currentURI && uri.hasRef && uri.equalsExceptRef(browsingContext.currentURI);
     } catch (e) {
