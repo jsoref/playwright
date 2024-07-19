@@ -11576,7 +11576,7 @@ index 0000000000000000000000000000000000000000..cfb57a48ce387b79613b757e2eb4de2c
 +
 +void initializeBrowserInspectorPipe(std::unique_ptr<InspectorPlaywrightAgentClient> client)
 +{
-+    // Initialize main loop before creating inspecor agent and pipe queues.
++    // Initialize main loop before creating inspector agent and pipe queues.
 +    WebKit::InitializeWebKit2();
 +
 +    class BrowserInspectorPipe {
