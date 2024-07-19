@@ -306,7 +306,7 @@ test('should respect complex path resolver', async ({ runInlineTest }) => {
       export const foo: string = 'foo';
     `,
     './this-is-not-the-longest-prefix.ts': `
-      // This module should't be resolved as it matches by a shorter prefix
+      // This module shouldn't be resolved as it matches by a shorter prefix
       export const bar: string = 'bar';
     `,
     'f.spec.ts': `
