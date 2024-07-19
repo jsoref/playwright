@@ -528,7 +528,7 @@ class PageTarget {
     // 3. browserContext viewport size
     //
     // The "default size" (1) is only respected when the page is opened.
-    // Otherwise, explicitly set page viewport prevales over browser context
+    // Otherwise, explicitly set page viewport prevails over browser context
     // default viewport.
     const viewportSize = this._viewportSize || this._browserContext.defaultViewportSize;
     if (viewportSize) {
