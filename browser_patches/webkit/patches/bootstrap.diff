@@ -12220,7 +12220,7 @@ index 0000000000000000000000000000000000000000..f9af359a8b81babaf855132ec168feb2
 +
 +
 +#ifndef LIBJPEG_TURBO_VERSION
-+/*! This function makes a covnersion for "odd" pixel sizes which typically is a
++/*! This function makes a conversion for "odd" pixel sizes which typically is a
 + * conversion from a 3-byte to a 4-byte (or more) pixel size or vice versa.
 + * The conversion is done from the source buffer src to the destination buffer
 + * dst. The caller MUST ensure that src and dst have the correct memory size.
