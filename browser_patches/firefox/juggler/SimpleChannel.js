@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 "use strict";
-// Note: this file should be loadabale with eval() into worker environment.
+// Note: this file should be loadable with eval() into worker environment.
 // Avoid Components.*, ChromeUtils and global const variables.
 
 const SIMPLE_CHANNEL_MESSAGE_NAME = 'juggler:simplechannel';
