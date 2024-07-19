@@ -2738,11 +2738,11 @@ index 4573e28470c5112f5ac2c5dd53e7a9d1ceedb943..b53b86d8e39f1de4b0d0f1a8d5d7295e
 +    nsCOMPtr<nsIFile> fileToUse;
 +    rv = interceptor->InterceptDownloadRequest(this, request, mBrowsingContext, getter_AddRefs(fileToUse), &isIntercepted);
 +    if (!NS_SUCCEEDED(rv)) {
-+      LOG(("    failed to call nsIDowloadInterceptor.interceptDownloadRequest"));
++      LOG(("    failed to call nsIDownloadInterceptor.interceptDownloadRequest"));
 +      return rv;
 +    }
 +    if (isIntercepted) {
-+      LOG(("    request interceped by nsIDowloadInterceptor"));
++      LOG(("    request interceped by nsIDownloadInterceptor"));
 +      if (fileToUse) {
 +        mTempFile = fileToUse;
 +        rv = mTempFile->GetLeafName(mTempLeafName);
@@ -2784,7 +2784,7 @@ index 4573e28470c5112f5ac2c5dd53e7a9d1ceedb943..b53b86d8e39f1de4b0d0f1a8d5d7295e
 +    if (interceptor) {
 +      nsCString noError;
 +      nsresult rv = interceptor->OnDownloadComplete(this, noError);
-+      MOZ_ASSERT(NS_SUCCEEDED(rv), "Failed to call nsIDowloadInterceptor.OnDownloadComplete");
++      MOZ_ASSERT(NS_SUCCEEDED(rv), "Failed to call nsIDownloadInterceptor.OnDownloadComplete");
 +      Unused << rv;
 +    }
 +  }
@@ -2801,7 +2801,7 @@ index 4573e28470c5112f5ac2c5dd53e7a9d1ceedb943..b53b86d8e39f1de4b0d0f1a8d5d7295e
 +    nsCString errorName;
 +    GetErrorName(aReason, errorName);
 +    nsresult rv = interceptor->OnDownloadComplete(this, errorName);
-+    MOZ_ASSERT(NS_SUCCEEDED(rv), "Failed notify nsIDowloadInterceptor about cancel");
++    MOZ_ASSERT(NS_SUCCEEDED(rv), "Failed notify nsIDownloadInterceptor about cancel");
 +    Unused << rv;
 +  }
 +
